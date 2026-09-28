@@ -82,6 +82,12 @@ PCM_BIN=/absolute/path/pcm-memory bash pref_dram_l3.sh dram.log 2
 
 监控独立运行，结束负载不会自动结束监控；在监控终端按 Ctrl+C 停止。按服务器现有的计数器权限运行。相对日志路径相对于调用时的工作目录，不会因为切换工具目录而改变。
 
+### 按运行时间保存独立采集日志
+
+运行 `bash run_monitor_once.sh 30`，每次在 `${SCRIPT_PATH:-/home/w00850971/scripts}/result/monitor/年月日_时分秒_随机后缀/` 下保存 `dram_l3.log`（采集器原始输出）、`monitor_console.log`（开始/结束时间、退出状态和包装脚本输出）以及 `bandwidth_summary.log`（原始时间戳和关键带宽汇总行）。这是每次运行独立建目录，不是在一次运行中定时轮转文件。时长包含采集器启动时间。
+
+汇总支持 Intel PCM 和鲲鹏 `dram_*_bandwidth_total`、`l3_cpu_*_bandwidth_total` 等日志格式；不改变采集器的计数器配置。服务器如已安装鲲鹏采集脚本，应保留该脚本，用 `MONITOR_SCRIPT=/absolute/path/to/collector.sh bash run_monitor_once.sh 30` 指定，采集脚本须接受第一个参数作为输出日志路径，并在采集期间保持前台运行。不要用仓库的 Intel PCM 包装脚本覆盖现场的鲲鹏采集器。
+
 官方 [Intel PCM](https://github.com/intel/pcm) 针对 Intel CPU；如果主机为鲲鹏/ARM，需确认这个路径是否是现场适配的工具，否则应使用对应平台的 DDR/内存控制器计数器工具。脚本不自动安装工具或修改权限。
 
 ## 如何判断效果
