@@ -2,7 +2,7 @@
 
 | 程序 | 行为 | 默认值 |
 | --- | --- | --- |
-| `periodic_read.cpp` | 常驻后台线程定时读取一块数组 | 每 5 ms 读取 30 MB；固定块 |
+| `periodic_read.cpp` | 常驻后台线程循环读取一块数组 | 无休眠连续读取 30 MB；固定块 |
 
 程序使用一个 `std::thread` 执行负载，主线程等待退出。初始化完整写入一次后，测量阶段只读数组，不拷贝、不修改数据；使用 volatile 读取防止编译器消除读操作。不使用 NPU/CANN、MPAM、缓存刷新指令或显式大页。
 
@@ -28,7 +28,22 @@ bash build.sh
 g++ -O3 -std=c++11 -Wall -Wextra -Wpedantic -pthread periodic_read.cpp -o periodic_read
 ```
 
-## 每 5 ms 读取一块内存
+## 连续读取与周期读取
+
+默认改为无休眠连续扫描，保持单线程和固定 30 MB 工作集，初始化后仍只读。旧版默认每 5 ms 读取一次，理论逻辑速率为 6 GB/s。新模式取消周期节流，但不保证实际 DRAM 超过 10 GB/s；必须检查服务器 `dram_rd_bandwidth_total` 是否稳定超过 10000 MB/s。
+
+```bash
+# 停止旧负载后启动连续读取，Ctrl+C 停止
+./periodic_read --size-mb 30 --period-ms 0 --seconds 0
+
+# 可选分级加压：理论逻辑速率分别为 15 GB/s、30 GB/s
+./periodic_read --size-mb 30 --period-ms 2 --seconds 60
+./periodic_read --size-mb 30 --period-ms 1 --seconds 60
+```
+
+实际速率取决于扫描耗时、缓存命中、单核吞吐和 NUMA，不保证随频率线性增加。连续模式的 `missed_slots=0` 表示未启用周期调度，不代表达到某个周期要求。单线程连续扫描仍未达标时，应先核对硬件计数器和 CPU/NUMA 拓扑，再决定是否增加并发或工作集。
+
+保留旧的每 5 ms 周期模式：
 
 ```bash
 # 固定读取同一个 30 MB 数组，预热 3 秒，正式运行 60 秒
@@ -43,11 +58,11 @@ g++ -O3 -std=c++11 -Wall -Wextra -Wpedantic -pthread periodic_read.cpp -o period
 | `--size-mb` | 30 | 每轮读取的块大小，正整数 MB |
 | `--pool-mb` | 等于块大小 | 总分配大小，必须是块大小的正整数倍 |
 | `--selection` | fixed | fixed 重读首块；rotate 按顺序轮转池内各块 |
-| `--period-ms` | 5 | 两轮计划开始时间的间隔，范围 1～86400000 ms |
+| `--period-ms` | 0 | 0 为无休眠连续读取；1～86400000 为周期毫秒数 |
 | `--seconds` | 60 | 正式运行秒数；0 表示持续运行直到停止信号 |
 | `--warmup-seconds` | 3 | 预热秒数；0 跳过预热 |
 
-第一轮立即读取，之后按单调时钟的固定周期调度。若扫描超过周期，跳过错过的时隙并记录 `missed_slots`，不会叠加线程或积压任务。Linux 普通调度不保证精确到每个 5 ms。
+周期模式下第一轮立即读取，之后按单调时钟的固定周期调度。若扫描超过周期，跳过错过的时隙并记录 `missed_slots`，不会叠加线程或积压任务。Linux 普通调度不保证精确到每个周期。
 
 30 MB / 5 ms 的理论逻辑读取速率为 6 GB/s，包含缓存命中，不是保证的 DRAM 带宽。结束时输出完成轮数、错过时隙、逻辑读取量和校验和；平均速率包含休眠时间。
 
@@ -62,7 +77,7 @@ g++ -O3 -std=c++11 -Wall -Wextra -Wpedantic -pthread periodic_read.cpp -o period
 后台启动并记录进程 ID：
 
 ```bash
-./periodic_read --size-mb 30 --period-ms 5 --seconds 0 > periodic.log 2>&1 &
+./periodic_read --size-mb 30 --period-ms 0 --seconds 0 > periodic.log 2>&1 &
 bg_pid=$!
 
 cat periodic.log
@@ -109,6 +124,6 @@ bash build.sh
 ./periodic_read --help
 ./periodic_read --size-mb 1 --pool-mb 4 --selection rotate --period-ms 5 --warmup-seconds 0 --seconds 1
 # 以下参数应报错并返回非零状态：
-./periodic_read --period-ms 0
+./periodic_read --period-ms 86400001
 ./periodic_read --size-mb 30 --pool-mb 31
 ```

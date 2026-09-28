@@ -63,7 +63,7 @@ Stats run(const volatile std::uint64_t* data, std::size_t block,
     };
     while (!expired()) {
         // Bounded sleeps permit prompt shutdown, even with a long period.
-        while (Clock::now() < next && !expired()) {
+        while (period_ms && Clock::now() < next && !expired()) {
             std::this_thread::sleep_until(std::min(next,
                 Clock::now() + std::chrono::milliseconds(1)));
         }
@@ -85,6 +85,8 @@ Stats run(const volatile std::uint64_t* data, std::size_t block,
         if (rotate) selected = (selected + 1) % blocks;
         // Fixed start-to-start period. Skip overdue slots, never spawn extra
         // workers or build an unbounded backlog when a scan takes > period.
+        // Continuous mode has no pacing or missed slots; avoid zero division.
+        if (!period_ms) continue;
         next += period;
         const auto now = Clock::now();
         if (next < now) {
@@ -100,7 +102,7 @@ Stats run(const volatile std::uint64_t* data, std::size_t block,
 
 int worker(int argc, char** argv) {
     try {
-        std::uint64_t size_mb = 30, pool_mb = 0, period_ms = 5, seconds = 60, warmup = 3;
+        std::uint64_t size_mb = 30, pool_mb = 0, period_ms = 0, seconds = 60, warmup = 3;
         bool pool_set = false, rotate = false;
         for (int i = 1; i < argc; ++i) {
             const std::string option(argv[i]);
@@ -108,10 +110,11 @@ int worker(int argc, char** argv) {
                 std::cout << "Usage: periodic_read [--size-mb N] [--pool-mb N] "
                     "[--selection fixed|rotate] [--period-ms N] [--seconds N] "
                     "[--warmup-seconds N]\n"
-                    "Defaults: block=30 MB, pool=block, fixed, period=5 ms, "
+                    "Defaults: block=30 MB, pool=block, fixed, period=0 (continuous), "
                     "duration=60 s, warmup=3 s. MB=1000000 bytes.\n"
                     "Pool must be a positive multiple of block size.\n"
                     "seconds=0: until signal; warmup=0: no warmup.\n"
+                    "period-ms=0: continuous scanning without sleeps.\n"
                     "Measurement reports logical read GB/s approximately every second.\n"
                     "Periods are start-to-start; overdue slots are skipped.\n";
                 return 0;
@@ -139,8 +142,8 @@ int worker(int argc, char** argv) {
         if (!size_mb || !pool_mb || pool_mb < size_mb || pool_mb % size_mb ||
             pool_mb > std::numeric_limits<std::size_t>::max() / 1000000)
             throw std::invalid_argument("pool must fit size_t and be a positive multiple of size-mb");
-        if (!period_ms || period_ms > 86400000)
-            throw std::invalid_argument("period-ms must be in [1, 86400000]");
+        if (period_ms > 86400000)
+            throw std::invalid_argument("period-ms must be in [0, 86400000]");
         const auto count = static_cast<std::size_t>(pool_mb) * 1000000 / sizeof(std::uint64_t);
         const auto block = static_cast<std::size_t>(size_mb) * 1000000 / sizeof(std::uint64_t);
         std::unique_ptr<std::uint64_t[]> data(new std::uint64_t[count]);
@@ -150,6 +153,7 @@ int worker(int argc, char** argv) {
         }
         std::cout << "Initialized: block_MB=" << size_mb << " pool_MB=" << pool_mb
                   << " period_ms=" << period_ms << " selection=" << (rotate ? "rotate" : "fixed")
+                  << " pacing=" << (period_ms ? "periodic" : "continuous")
                   << " worker_threads=1\nWarmup: seconds=" << warmup << std::endl;
         if (warmup && !stopped) {
             const auto stats = run(data.get(), block, count / block, rotate, period_ms, warmup);
