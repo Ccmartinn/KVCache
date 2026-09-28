@@ -1,11 +1,10 @@
-# NVMe-oF 场景的两套 CPU 后台读负载
+# NVMe-oF 场景的周期性 CPU 后台读负载
 
 | 程序 | 行为 | 默认值 |
 | --- | --- | --- |
 | `periodic_read.cpp` | 常驻后台线程定时读取一块数组 | 每 5 ms 读取 30 MB；固定块 |
-| `background_read.cpp` | 常驻后台线程连续循环读取整个数组 | 30 MB，无主动休眠 |
 
-两套均使用一个 `std::thread` 执行负载，主线程等待退出。初始化完整写入一次后，测量阶段只读数组，不拷贝、不修改数据；使用 volatile 读取防止编译器消除读操作。不使用 NPU/CANN、MPAM、缓存刷新指令或显式大页。
+程序使用一个 `std::thread` 执行负载，主线程等待退出。初始化完整写入一次后，测量阶段只读数组，不拷贝、不修改数据；使用 volatile 读取防止编译器消除读操作。不使用 NPU/CANN、MPAM、缓存刷新指令或显式大页。
 
 ## NVMe-oF 参考与场景构建
 
@@ -13,7 +12,7 @@
 
 示例中的 `nvmf_reactor_run()` 持续调用 `spdk_thread_poll()`；`nvmf_init_threads()` 为 CPU 核建立 reactor 并启动绑定的系统线程。由此，若研究内存干扰，应将后台读取放在独立 OS 线程或进程里，不应直接在前台轮询回调中插入 sleep 或长时间数组扫描，否则会混入阻塞前台处理的影响。
 
-先分别单独运行两套程序，确认后台自身的 DRAM 读写表现；以后再与 NVMe-oF 服务同时运行。前后台使用不同 CPU 核，但应共享目标 LLC/L3 域，并将数据放在预期 NUMA 节点。可在启动命令前使用服务器已有的 `taskset` 或 `numactl`，CPU/节点编号按拓扑选择。普通 `nice` 只改变 CPU 调度优先级，不等于内存带宽限速。
+先单独运行后台程序，确认其自身的 DRAM 读写表现；以后再与 NVMe-oF 服务同时运行。前后台使用不同 CPU 核，但应共享目标 LLC/L3 域，并将数据放在预期 NUMA 节点。可在启动命令前使用服务器已有的 `taskset` 或 `numactl`，CPU/节点编号按拓扑选择。普通 `nice` 只改变 CPU 调度优先级，不等于内存带宽限速。
 
 ## 编译
 
@@ -27,10 +26,9 @@ bash build.sh
 
 ```bash
 g++ -O3 -std=c++11 -Wall -Wextra -Wpedantic -pthread periodic_read.cpp -o periodic_read
-g++ -O3 -std=c++11 -Wall -Wextra -Wpedantic -pthread background_read.cpp -o background_read
 ```
 
-## 第一套：每 5 ms 读取一块内存
+## 每 5 ms 读取一块内存
 
 ```bash
 # 固定读取同一个 30 MB 数组，预热 3 秒，正式运行 60 秒
@@ -55,30 +53,15 @@ g++ -O3 -std=c++11 -Wall -Wextra -Wpedantic -pthread background_read.cpp -o back
 
 固定块模式可能在预热后主要命中缓存。如果实际 DRAM 读流量低，可以显式增大池并轮转，使活跃工作集超过可用 LLC；这改变了总工作集，实验记录中必须保留 `pool_MB`。240 MB 只是示例，不保证适合所有服务器。
 
-## 第二套：连续循环读取 30 MB 数组
-
-```bash
-./background_read --size-mb 30 --seconds 60 --warmup-seconds 3
-
-# 修改数组大小
-./background_read --size-mb 120 --seconds 60
-```
-
-支持 `--size-mb`、`--seconds`、`--warmup-seconds` 和 `--help`，含义与第一套一致。持续循环扫描数组，无周期休眠；单线程不保证打满内存带宽。
-
 统一 **1 MB = 1,000,000 字节**，默认 30 MB 约为 28.61 MiB。数组虚拟地址连续，不保证物理连续，也不锁定页面。
 
 ## 后台运行及监控
 
-每次只运行其中一种负载，避免两套程序互相干扰：
+后台启动并记录进程 ID：
 
 ```bash
 ./periodic_read --size-mb 30 --period-ms 5 --seconds 0 > periodic.log 2>&1 &
 bg_pid=$!
-
-# 第二套使用下面命令替换上面的启动命令：
-# ./background_read --size-mb 30 --seconds 0 > continuous.log 2>&1 &
-# bg_pid=$!
 
 cat periodic.log
 # 看到 READY 后，在另一个终端执行：
@@ -107,20 +90,17 @@ PCM_BIN=/absolute/path/pcm-memory bash pref_dram_l3.sh dram.log 2
 
 CPU 读取可能填充缓存，但普通读取不会保证只填 L3、绕过其他缓存或把整个数组锁在 L3。干净缓存行逐出不要求写回 DRAM；本程序不主动写脏数组，因此不会有意制造持续的数组写回流量。volatile 仅约束编译器，不绕过缓存。
 
-`logical_read_GB_s` 包含缓存命中，不能当作 DRAM 带宽。2 秒采样只能显示平均流量，不能分辨每个 5 ms 突发。两套程序均不承诺固定 30 MB 工作集必然产生大量 DRAM 读流量，最终以服务器计数器为准。
+`logical_read_GB_s` 包含缓存命中，不能当作 DRAM 带宽。2 秒采样只能显示平均流量，不能分辨每个 5 ms 突发。程序不承诺固定 30 MB 工作集必然产生大量 DRAM 读流量，最终以服务器计数器为准。
 
 ## 验证情况
 
-当前 Windows 环境未找到可用 C++ 编译器，尚未编译运行两套 C++ 程序，也没有目标服务器的硬件带宽结果。两个 shell 脚本已通过 Bash 语法检查。服务器上可先做以下冒烟检查：
+当前 Windows 环境未找到可用 C++ 编译器，尚未编译运行 C++ 程序，也没有目标服务器的硬件带宽结果。两个 shell 脚本已通过 Bash 语法检查。服务器上可先做以下冒烟检查：
 
 ```bash
 bash build.sh
 ./periodic_read --help
-./background_read --help
 ./periodic_read --size-mb 1 --pool-mb 4 --selection rotate --period-ms 5 --warmup-seconds 0 --seconds 1
-./background_read --size-mb 1 --warmup-seconds 0 --seconds 1
 # 以下参数应报错并返回非零状态：
 ./periodic_read --period-ms 0
 ./periodic_read --size-mb 30 --pool-mb 31
-./background_read --size-mb 0
 ```
