@@ -32,16 +32,34 @@ struct Stats {
 
 Stats run(const volatile std::uint64_t* data, std::size_t block,
           std::size_t blocks, bool rotate, std::uint64_t period_ms,
-          std::uint64_t seconds) {
+          std::uint64_t seconds, bool report_progress = false) {
     Stats result;
     std::uint64_t a = 0, b = 0, c = 0, d = 0;
     std::size_t selected = 0;
     const auto start = Clock::now();
     auto next = start;
     const auto period = std::chrono::milliseconds(period_ms);
+    auto last_report = start;
+    long double last_bytes = 0;
     auto expired = [&]() {
+        const auto now = Clock::now();
+        const double interval = std::chrono::duration<double>(now - last_report).count();
+        if (report_progress && interval >= 1.0) {
+            // Use actual elapsed time and bytes since the previous report,
+            // including sleep time. Flush so redirected logs update live too.
+            std::cout << std::fixed << std::setprecision(3)
+                      << "[PROGRESS] elapsed_s="
+                      << std::chrono::duration<double>(now - start).count()
+                      << " interval_s=" << interval
+                      << " logical_read_GB_s="
+                      << (result.bytes - last_bytes) / interval / 1e9L
+                      << " completed_bursts=" << result.bursts
+                      << " missed_slots=" << result.missed << std::endl;
+            last_report = now;
+            last_bytes = result.bytes;
+        }
         return stopped || (seconds &&
-            std::chrono::duration<double>(Clock::now() - start).count() >= seconds);
+            std::chrono::duration<double>(now - start).count() >= seconds);
     };
     while (!expired()) {
         // Bounded sleeps permit prompt shutdown, even with a long period.
@@ -94,6 +112,7 @@ int worker(int argc, char** argv) {
                     "duration=60 s, warmup=3 s. MB=1000000 bytes.\n"
                     "Pool must be a positive multiple of block size.\n"
                     "seconds=0: until signal; warmup=0: no warmup.\n"
+                    "Measurement reports logical read GB/s approximately every second.\n"
                     "Periods are start-to-start; overdue slots are skipped.\n";
                 return 0;
             }
@@ -138,7 +157,9 @@ int worker(int argc, char** argv) {
         }
         if (stopped) return 0;
         std::cout << "READY: periodic read-only measurement starts; seconds=" << seconds << std::endl;
-        const auto stats = run(data.get(), block, count / block, rotate, period_ms, seconds);
+        std::cout << "Progress reports logical reads including idle time and cache hits; "
+                     "not hardware L3 or DRAM bandwidth." << std::endl;
+        const auto stats = run(data.get(), block, count / block, rotate, period_ms, seconds, true);
         std::cout << std::fixed << std::setprecision(3)
                   << "elapsed_s=" << stats.elapsed << " completed_bursts=" << stats.bursts
                   << " missed_slots=" << stats.missed << " logical_read_GB=" << stats.bytes / 1e9L
