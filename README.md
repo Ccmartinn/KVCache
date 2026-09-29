@@ -61,6 +61,30 @@ g++ -O3 -std=c++11 -Wall -Wextra -Wpedantic -pthread periodic_read.cpp -o period
 | `--period-ms` | 0 | 0 为无休眠连续读取；1～86400000 为周期毫秒数 |
 | `--seconds` | 60 | 正式运行秒数；0 表示持续运行直到停止信号 |
 | `--warmup-seconds` | 3 | 预热秒数；0 跳过预热 |
+| `--access` | sequential | sequential 为顺序读；random 为块内元素随机排列读取 |
+| `--seed` | 1 | 非负整数随机种子，用于生成访问顺序 |
+
+### 随机读取
+
+```bash
+bash build.sh
+./periodic_read --size-mb 30 --access random --seed 1 --period-ms 0 --seconds 0
+# 可与池轮转组合：块按顺序轮转，每块内部按随机索引访问
+./periodic_read --size-mb 30 --pool-mb 960 --selection rotate --access random --seconds 0
+```
+
+随机模式在预热前生成 8 字节元素索引的随机排列，每轮每个元素恰好读一次；索引在各轮、各块及预热和正式阶段复用，不会每轮重新洗牌。相同构建和种子可复现顺序，不保证不同标准库实现生成相同排列。正式读取阶段只读数据和索引，不生成随机数。`--selection` 控制块选择，`--access` 控制块内访问顺序，两者独立。
+
+索引表每个元素占 `sizeof(size_t)` 字节；在 64 位服务器上，30 MB 数据块额外需要约 30 MB 索引表，启动输出 `index_MB` 显示其大小。总工作集包含数据池和索引表，不能再当作仅 30 MB。逻辑带宽只累计数据数组的读取字节，不含索引读取；硬件带宽可能包含二者。随机访问不绕过缓存，不保证增加 DRAM 带宽或降低前台吞吐。
+
+随机读取验证（需要 C++ 编译器，约两秒）：
+
+```bash
+g++ -O2 -std=c++11 -pthread tests/random_read_test.cpp -o random_read_test
+./random_read_test
+```
+
+验证覆盖排列完整性、种子复现、尾部读取、校验和、字节统计及停止标志。
 
 周期模式下第一轮立即读取，之后按单调时钟的固定周期调度。若扫描超过周期，跳过错过的时隙并记录 `missed_slots`，不会叠加线程或积压任务。Linux 普通调度不保证精确到每个周期。
 

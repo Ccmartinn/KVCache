@@ -8,9 +8,11 @@
 #include <iostream>
 #include <limits>
 #include <memory>
+#include <random>
 #include <stdexcept>
 #include <string>
 #include <thread>
+#include <vector>
 
 namespace {
 static_assert(ATOMIC_BOOL_LOCK_FREE == 2, "signal handling requires lock-free atomic bool");
@@ -30,9 +32,27 @@ struct Stats {
     double elapsed = 0;
 };
 
+// One permutation per block, reused across passes and pool blocks.
+// Preparation is outside the timed read loop; no writes to data during reads.
+std::vector<std::size_t> random_order(std::size_t count, std::uint64_t seed) {
+    std::vector<std::size_t> order(count);
+    for (std::size_t i = 0; i < count; ++i) {
+        if (i % 8192 == 0 && stopped) return {};
+        order[i] = i;
+    }
+    std::mt19937_64 generator(seed);
+    for (std::size_t remaining = count; remaining > 1; --remaining) {
+        if (remaining % 8192 == 0 && stopped) return {};
+        std::uniform_int_distribution<std::size_t> pick(0, remaining - 1);
+        std::swap(order[remaining - 1], order[pick(generator)]);
+    }
+    return order;
+}
+
 Stats run(const volatile std::uint64_t* data, std::size_t block,
           std::size_t blocks, bool rotate, std::uint64_t period_ms,
-          std::uint64_t seconds, bool report_progress = false) {
+          std::uint64_t seconds, const std::vector<std::size_t>& order,
+          bool report_progress = false) {
     Stats result;
     std::uint64_t a = 0, b = 0, c = 0, d = 0;
     std::size_t selected = 0;
@@ -73,11 +93,19 @@ Stats run(const volatile std::uint64_t* data, std::size_t block,
         while (offset < block && !expired()) {
             const auto end = offset + std::min<std::size_t>(8192, block - offset);
             std::size_t i = offset;
-            for (; end - i >= 4; i += 4) {
-                a += source[i]; b += source[i + 1];
-                c += source[i + 2]; d += source[i + 3];
+            if (order.empty()) {
+                for (; end - i >= 4; i += 4) {
+                    a += source[i]; b += source[i + 1];
+                    c += source[i + 2]; d += source[i + 3];
+                }
+                for (; i < end; ++i) a += source[i];
+            } else {
+                for (; end - i >= 4; i += 4) {
+                    a += source[order[i]]; b += source[order[i + 1]];
+                    c += source[order[i + 2]]; d += source[order[i + 3]];
+                }
+                for (; i < end; ++i) a += source[order[i]];
             }
-            for (; i < end; ++i) a += source[i];
             result.bytes += static_cast<long double>(end - offset) * sizeof(*source);
             offset = end;
         }
@@ -104,27 +132,38 @@ int worker(int argc, char** argv) {
     try {
         std::uint64_t size_mb = 30, pool_mb = 0, period_ms = 0, seconds = 60, warmup = 3;
         bool pool_set = false, rotate = false;
+        bool random = false;
+        std::uint64_t seed = 1;
         for (int i = 1; i < argc; ++i) {
             const std::string option(argv[i]);
             if (option == "--help" || option == "-h") {
                 std::cout << "Usage: periodic_read [--size-mb N] [--pool-mb N] "
                     "[--selection fixed|rotate] [--period-ms N] [--seconds N] "
-                    "[--warmup-seconds N]\n"
+                    "[--warmup-seconds N] [--access sequential|random] [--seed N]\n"
                     "Defaults: block=30 MB, pool=block, fixed, period=0 (continuous), "
                     "duration=60 s, warmup=3 s. MB=1000000 bytes.\n"
                     "Pool must be a positive multiple of block size.\n"
                     "seconds=0: until signal; warmup=0: no warmup.\n"
                     "period-ms=0: continuous scanning without sleeps.\n"
+                    "access=sequential by default; random uses a fixed shuffled element order.\n"
+                    "seed=1 by default; index storage adds block_elements * sizeof(size_t) bytes.\n"
                     "Measurement reports logical read GB/s approximately every second.\n"
                     "Periods are start-to-start; overdue slots are skipped.\n";
                 return 0;
             }
             if (option != "--size-mb" && option != "--pool-mb" &&
                 option != "--selection" && option != "--period-ms" &&
-                option != "--seconds" && option != "--warmup-seconds")
+                option != "--seconds" && option != "--warmup-seconds" &&
+                option != "--access" && option != "--seed")
                 throw std::invalid_argument("unknown option: " + option);
             if (++i == argc) throw std::invalid_argument("missing value for " + option);
             const std::string value(argv[i]);
+            if (option == "--access") {
+                if (value != "sequential" && value != "random")
+                    throw std::invalid_argument("access must be sequential or random");
+                random = value == "random";
+                continue;
+            }
             if (option == "--selection") {
                 if (value != "fixed" && value != "rotate")
                     throw std::invalid_argument("selection must be fixed or rotate");
@@ -136,6 +175,7 @@ int worker(int argc, char** argv) {
             else if (option == "--pool-mb") { pool_mb = n; pool_set = true; }
             else if (option == "--period-ms") period_ms = n;
             else if (option == "--seconds") seconds = n;
+            else if (option == "--seed") seed = n;
             else warmup = n;
         }
         if (!pool_set) pool_mb = size_mb;
@@ -151,19 +191,23 @@ int worker(int argc, char** argv) {
             if (i % 8192 == 0 && stopped) return 0;
             data[i] = static_cast<std::uint64_t>(i) + 1;
         }
+        const auto order = random ? random_order(block, seed) : std::vector<std::size_t>{};
+        if (stopped) return 0;
         std::cout << "Initialized: block_MB=" << size_mb << " pool_MB=" << pool_mb
                   << " period_ms=" << period_ms << " selection=" << (rotate ? "rotate" : "fixed")
                   << " pacing=" << (period_ms ? "periodic" : "continuous")
+                  << " access=" << (random ? "random" : "sequential") << " seed=" << seed
+                  << " index_MB=" << static_cast<long double>(order.size()) * sizeof(std::size_t) / 1e6L
                   << " worker_threads=1\nWarmup: seconds=" << warmup << std::endl;
         if (warmup && !stopped) {
-            const auto stats = run(data.get(), block, count / block, rotate, period_ms, warmup);
+            const auto stats = run(data.get(), block, count / block, rotate, period_ms, warmup, order);
             std::cout << "Warmup checksum=" << stats.checksum << std::endl;
         }
         if (stopped) return 0;
         std::cout << "READY: periodic read-only measurement starts; seconds=" << seconds << std::endl;
         std::cout << "Progress reports logical reads including idle time and cache hits; "
                      "not hardware L3 or DRAM bandwidth." << std::endl;
-        const auto stats = run(data.get(), block, count / block, rotate, period_ms, seconds, true);
+        const auto stats = run(data.get(), block, count / block, rotate, period_ms, seconds, order, true);
         std::cout << std::fixed << std::setprecision(3)
                   << "elapsed_s=" << stats.elapsed << " completed_bursts=" << stats.bursts
                   << " missed_slots=" << stats.missed << " logical_read_GB=" << stats.bytes / 1e9L
