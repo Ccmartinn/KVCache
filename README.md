@@ -74,6 +74,12 @@ g++ -O3 -std=c++11 -Wall -Wextra -Wpedantic -pthread periodic_read.cpp -o period
 
 ## 后台运行及监控
 
+### 多进程只读压力
+
+`bash run_read_pressure.sh 8 256 0` 启动 8 个连续读取进程，每个使用 256 MB，总计 2048 MB，持续运行。按 Ctrl+C 统一停止本次启动的进程，日志保存在 `result/read_pressure/时间_随机后缀/`。需要 Linux、Bash 4.3+ 和已编译的新版本 `periodic_read`。分配超过主机 MemAvailable 一半时拒绝启动；容器内存限制可能更低，应自行选用更小规模。
+
+先停止旧负载，再依次测试 8、16、32 个进程，每次停止上一组后再启动下一组，例如 `bash run_read_pressure.sh 16 256 0`。所有进程出现 READY 后再测稳定流量，初始化会产生写流量。对比前台单独运行和并行压力下的前台吞吐、延迟及 DRAM 指标。脚本不自动测量前台、不保证使前台降速，也不自动绑定 CPU 或 NUMA。CPU 调度竞争也可能影响前台；若要归因于 DRAM，应将前后台绑定到同一内存节点的不同物理核，并核对内存分配。总工作集不再固定为 30 MB。
+
 后台启动并记录进程 ID：
 
 ```bash
