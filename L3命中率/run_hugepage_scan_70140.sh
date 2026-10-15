@@ -3,10 +3,10 @@ set -euo pipefail
 cd -- "$(dirname -- "${BASH_SOURCE[0]}")"
 
 # 1. 需要遍历的参数，修改括号里的值即可
-page_sizes=(512K 1M)
-thread_counts=(7 14)
 hugepage_counts=(16 28 32)
 cache_sizes=(70 140)
+thread_counts=(7 14)
+page_sizes=(512K 1M)
 
 # 2. 每组固定参数
 rounds=15
@@ -19,11 +19,11 @@ warmup_seconds=10
 mkdir -p results/hugepage_scan_70140
 log_dir=$(mktemp -d "results/hugepage_scan_70140/$(date +%Y%m%d_%H%M%S)_XXXXXX")
 
-# 4. 逐组运行；上一组结束后才启动下一组
-for page_size in "${page_sizes[@]}"; do
-    for thread_count in "${thread_counts[@]}"; do
-        for hugepage_count in "${hugepage_counts[@]}"; do
-            for cache_size in "${cache_sizes[@]}"; do
+# 4. 外层到内层：大页数量 → cachesize → 线程数 → pagesize；逐组运行
+for hugepage_count in "${hugepage_counts[@]}"; do
+    for cache_size in "${cache_sizes[@]}"; do
+        for thread_count in "${thread_counts[@]}"; do
+            for page_size in "${page_sizes[@]}"; do
                 log_file="$log_dir/${page_size}_${thread_count}threads_${hugepage_count}pages_${cache_size}MiB.log"
                 echo "运行：$page_size / ${thread_count}线程 / ${hugepage_count}大页 / ${cache_size}MiB；日志：$log_file"
                 taskset -c 0-15 ./hugepage_scan_70140 \
