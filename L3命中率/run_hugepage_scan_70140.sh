@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -eu
+set -euo pipefail
 cd -- "$(dirname -- "${BASH_SOURCE[0]}")"
 
 # 1. 需要遍历的参数，修改括号里的值即可
@@ -29,7 +29,8 @@ for page_size in "${page_sizes[@]}"; do
                 taskset -c 0-15 ./hugepage_scan_70140 \
                     "$page_size" "$thread_count" random "$rounds" "$start_seed" \
                     "$measure_seconds" "$warmup_seconds" "$hugepage_count" "$cache_size" \
-                    > "$log_file" 2>&1
+                    2>&1 | tee "$log_file" | \
+                    awk '/^(TRIAL_|STAGE_|mode=)/ { print; fflush() }'
             done
         done
     done
