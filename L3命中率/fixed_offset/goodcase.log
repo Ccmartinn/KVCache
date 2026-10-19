@@ -1,0 +1,554 @@
+TRIAL_BEGIN round=3 mode=random seed=2
+mode=random seed=2 quarter_counts=[14,17,20,19]
+=== Selected region mapping (offsets are bytes) ===
+tid=0 region=0 sorted_page=0 hugepage=31 huge_va=0xffff40000000 huge_pa=0x0000082780000000 offset=0x2ce00000 offset_bytes=752877568 region_va=0xffff6ce00000 region_pa=0x00000827ace00000
+tid=0 region=1 sorted_page=1 hugepage=30 huge_va=0xffff00000000 huge_pa=0x00000827c0000000 offset=0x24200000 offset_bytes=606076928 region_va=0xffff24200000 region_pa=0x00000827e4200000
+tid=0 region=2 sorted_page=2 hugepage=29 huge_va=0xfffec0000000 huge_pa=0x0000082800000000 offset=0x32f00000 offset_bytes=854589440 region_va=0xfffef2f00000 region_pa=0x0000082832f00000
+tid=0 region=3 sorted_page=3 hugepage=28 huge_va=0xfffe80000000 huge_pa=0x0000082840000000 offset=0x26400000 offset_bytes=641728512 region_va=0xfffea6400000 region_pa=0x0000082866400000
+tid=0 region=4 sorted_page=4 hugepage=27 huge_va=0xfffe40000000 huge_pa=0x0000082880000000 offset=0x32900000 offset_bytes=848297984 region_va=0xfffe72900000 region_pa=0x00000828b2900000
+tid=1 region=5 sorted_page=5 hugepage=26 huge_va=0xfffe00000000 huge_pa=0x00000828c0000000 offset=0x2b300000 offset_bytes=724566016 region_va=0xfffe2b300000 region_pa=0x00000828eb300000
+tid=1 region=6 sorted_page=6 hugepage=25 huge_va=0xfffdc0000000 huge_pa=0x0000082900000000 offset=0x18600000 offset_bytes=408944640 region_va=0xfffdd8600000 region_pa=0x0000082918600000
+tid=1 region=7 sorted_page=7 hugepage=24 huge_va=0xfffd80000000 huge_pa=0x0000082940000000 offset=0x18300000 offset_bytes=405798912 region_va=0xfffd98300000 region_pa=0x0000082958300000
+tid=1 region=8 sorted_page=8 hugepage=23 huge_va=0xfffd40000000 huge_pa=0x0000082980000000 offset=0x0ff00000 offset_bytes=267386880 region_va=0xfffd4ff00000 region_pa=0x000008298ff00000
+tid=1 region=9 sorted_page=9 hugepage=22 huge_va=0xfffd00000000 huge_pa=0x00000829c0000000 offset=0x06c00000 offset_bytes=113246208 region_va=0xfffd06c00000 region_pa=0x00000829c6c00000
+tid=2 region=10 sorted_page=10 hugepage=21 huge_va=0xfffcc0000000 huge_pa=0x0000082a00000000 offset=0x23500000 offset_bytes=592445440 region_va=0xfffce3500000 region_pa=0x0000082a23500000
+tid=2 region=11 sorted_page=11 hugepage=20 huge_va=0xfffc80000000 huge_pa=0x0000082a40000000 offset=0x17700000 offset_bytes=393216000 region_va=0xfffc97700000 region_pa=0x0000082a57700000
+tid=2 region=12 sorted_page=12 hugepage=19 huge_va=0xfffc40000000 huge_pa=0x0000082a80000000 offset=0x36100000 offset_bytes=907018240 region_va=0xfffc76100000 region_pa=0x0000082ab6100000
+tid=2 region=13 sorted_page=13 hugepage=18 huge_va=0xfffc00000000 huge_pa=0x0000082ac0000000 offset=0x1ae00000 offset_bytes=450887680 region_va=0xfffc1ae00000 region_pa=0x0000082adae00000
+tid=2 region=14 sorted_page=14 hugepage=17 huge_va=0xfffbc0000000 huge_pa=0x0000082b00000000 offset=0x1f300000 offset_bytes=523239424 region_va=0xfffbdf300000 region_pa=0x0000082b1f300000
+tid=3 region=15 sorted_page=15 hugepage=16 huge_va=0xfffb80000000 huge_pa=0x0000082b40000000 offset=0x21900000 offset_bytes=563085312 region_va=0xfffba1900000 region_pa=0x0000082b61900000
+tid=3 region=16 sorted_page=16 hugepage=15 huge_va=0xfffb40000000 huge_pa=0x0000082b80000000 offset=0x31200000 offset_bytes=824180736 region_va=0xfffb71200000 region_pa=0x0000082bb1200000
+tid=3 region=17 sorted_page=17 hugepage=14 huge_va=0xfffb00000000 huge_pa=0x0000082bc0000000 offset=0x3d400000 offset_bytes=1027604480 region_va=0xfffb3d400000 region_pa=0x0000082bfd400000
+tid=3 region=18 sorted_page=18 hugepage=13 huge_va=0xfffac0000000 huge_pa=0x0000082c00000000 offset=0x15200000 offset_bytes=354418688 region_va=0xfffad5200000 region_pa=0x0000082c15200000
+tid=3 region=19 sorted_page=19 hugepage=12 huge_va=0xfffa80000000 huge_pa=0x0000082c40000000 offset=0x2d500000 offset_bytes=760217600 region_va=0xfffaad500000 region_pa=0x0000082c6d500000
+tid=4 region=20 sorted_page=20 hugepage=11 huge_va=0xfffa40000000 huge_pa=0x0000082c80000000 offset=0x2c100000 offset_bytes=739246080 region_va=0xfffa6c100000 region_pa=0x0000082cac100000
+tid=4 region=21 sorted_page=21 hugepage=10 huge_va=0xfffa00000000 huge_pa=0x0000082cc0000000 offset=0x31d00000 offset_bytes=835715072 region_va=0xfffa31d00000 region_pa=0x0000082cf1d00000
+tid=4 region=22 sorted_page=22 hugepage=9 huge_va=0xfff9c0000000 huge_pa=0x0000082d00000000 offset=0x0b100000 offset_bytes=185597952 region_va=0xfff9cb100000 region_pa=0x0000082d0b100000
+tid=4 region=23 sorted_page=23 hugepage=8 huge_va=0xfff980000000 huge_pa=0x0000082d40000000 offset=0x29600000 offset_bytes=694157312 region_va=0xfff9a9600000 region_pa=0x0000082d69600000
+tid=4 region=24 sorted_page=24 hugepage=7 huge_va=0xfff940000000 huge_pa=0x0000082d80000000 offset=0x3e400000 offset_bytes=1044381696 region_va=0xfff97e400000 region_pa=0x0000082dbe400000
+tid=5 region=25 sorted_page=25 hugepage=6 huge_va=0xfff900000000 huge_pa=0x0000082dc0000000 offset=0x25200000 offset_bytes=622854144 region_va=0xfff925200000 region_pa=0x0000082de5200000
+tid=5 region=26 sorted_page=26 hugepage=5 huge_va=0xfff8c0000000 huge_pa=0x0000082e00000000 offset=0x38e00000 offset_bytes=954204160 region_va=0xfff8f8e00000 region_pa=0x0000082e38e00000
+tid=5 region=27 sorted_page=27 hugepage=4 huge_va=0xfff880000000 huge_pa=0x0000082e40000000 offset=0x32000000 offset_bytes=838860800 region_va=0xfff8b2000000 region_pa=0x0000082e72000000
+tid=5 region=28 sorted_page=28 hugepage=3 huge_va=0xfff840000000 huge_pa=0x0000082e80000000 offset=0x32d00000 offset_bytes=852492288 region_va=0xfff872d00000 region_pa=0x0000082eb2d00000
+tid=5 region=29 sorted_page=29 hugepage=2 huge_va=0xfff800000000 huge_pa=0x0000082ec0000000 offset=0x18200000 offset_bytes=404750336 region_va=0xfff818200000 region_pa=0x0000082ed8200000
+tid=6 region=30 sorted_page=30 hugepage=1 huge_va=0xfff7c0000000 huge_pa=0x0000082f00000000 offset=0x23900000 offset_bytes=596639744 region_va=0xfff7e3900000 region_pa=0x0000082f23900000
+tid=6 region=31 sorted_page=31 hugepage=0 huge_va=0xfff780000000 huge_pa=0x0000082f40000000 offset=0x25500000 offset_bytes=625999872 region_va=0xfff7a5500000 region_pa=0x0000082f65500000
+tid=6 region=32 sorted_page=0 hugepage=31 huge_va=0xffff40000000 huge_pa=0x0000082780000000 offset=0x10f00000 offset_bytes=284164096 region_va=0xffff50f00000 region_pa=0x0000082790f00000
+tid=6 region=33 sorted_page=1 hugepage=30 huge_va=0xffff00000000 huge_pa=0x00000827c0000000 offset=0x22400000 offset_bytes=574619648 region_va=0xffff22400000 region_pa=0x00000827e2400000
+tid=6 region=34 sorted_page=2 hugepage=29 huge_va=0xfffec0000000 huge_pa=0x0000082800000000 offset=0x0a900000 offset_bytes=177209344 region_va=0xfffeca900000 region_pa=0x000008280a900000
+tid=7 region=35 sorted_page=3 hugepage=28 huge_va=0xfffe80000000 huge_pa=0x0000082840000000 offset=0x1d300000 offset_bytes=489684992 region_va=0xfffe9d300000 region_pa=0x000008285d300000
+tid=7 region=36 sorted_page=4 hugepage=27 huge_va=0xfffe40000000 huge_pa=0x0000082880000000 offset=0x03c00000 offset_bytes=62914560 region_va=0xfffe43c00000 region_pa=0x0000082883c00000
+tid=7 region=37 sorted_page=5 hugepage=26 huge_va=0xfffe00000000 huge_pa=0x00000828c0000000 offset=0x3d100000 offset_bytes=1024458752 region_va=0xfffe3d100000 region_pa=0x00000828fd100000
+tid=7 region=38 sorted_page=6 hugepage=25 huge_va=0xfffdc0000000 huge_pa=0x0000082900000000 offset=0x34700000 offset_bytes=879755264 region_va=0xfffdf4700000 region_pa=0x0000082934700000
+tid=7 region=39 sorted_page=7 hugepage=24 huge_va=0xfffd80000000 huge_pa=0x0000082940000000 offset=0x1a100000 offset_bytes=437256192 region_va=0xfffd9a100000 region_pa=0x000008295a100000
+tid=8 region=40 sorted_page=8 hugepage=23 huge_va=0xfffd40000000 huge_pa=0x0000082980000000 offset=0x3be00000 offset_bytes=1004535808 region_va=0xfffd7be00000 region_pa=0x00000829bbe00000
+tid=8 region=41 sorted_page=9 hugepage=22 huge_va=0xfffd00000000 huge_pa=0x00000829c0000000 offset=0x26a00000 offset_bytes=648019968 region_va=0xfffd26a00000 region_pa=0x00000829e6a00000
+tid=8 region=42 sorted_page=10 hugepage=21 huge_va=0xfffcc0000000 huge_pa=0x0000082a00000000 offset=0x08700000 offset_bytes=141557760 region_va=0xfffcc8700000 region_pa=0x0000082a08700000
+tid=8 region=43 sorted_page=11 hugepage=20 huge_va=0xfffc80000000 huge_pa=0x0000082a40000000 offset=0x3b700000 offset_bytes=997195776 region_va=0xfffcbb700000 region_pa=0x0000082a7b700000
+tid=8 region=44 sorted_page=12 hugepage=19 huge_va=0xfffc40000000 huge_pa=0x0000082a80000000 offset=0x25000000 offset_bytes=620756992 region_va=0xfffc65000000 region_pa=0x0000082aa5000000
+tid=9 region=45 sorted_page=13 hugepage=18 huge_va=0xfffc00000000 huge_pa=0x0000082ac0000000 offset=0x05a00000 offset_bytes=94371840 region_va=0xfffc05a00000 region_pa=0x0000082ac5a00000
+tid=9 region=46 sorted_page=14 hugepage=17 huge_va=0xfffbc0000000 huge_pa=0x0000082b00000000 offset=0x3e100000 offset_bytes=1041235968 region_va=0xfffbfe100000 region_pa=0x0000082b3e100000
+tid=9 region=47 sorted_page=15 hugepage=16 huge_va=0xfffb80000000 huge_pa=0x0000082b40000000 offset=0x1a000000 offset_bytes=436207616 region_va=0xfffb9a000000 region_pa=0x0000082b5a000000
+tid=9 region=48 sorted_page=16 hugepage=15 huge_va=0xfffb40000000 huge_pa=0x0000082b80000000 offset=0x19e00000 offset_bytes=434110464 region_va=0xfffb59e00000 region_pa=0x0000082b99e00000
+tid=9 region=49 sorted_page=17 hugepage=14 huge_va=0xfffb00000000 huge_pa=0x0000082bc0000000 offset=0x0d300000 offset_bytes=221249536 region_va=0xfffb0d300000 region_pa=0x0000082bcd300000
+tid=10 region=50 sorted_page=18 hugepage=13 huge_va=0xfffac0000000 huge_pa=0x0000082c00000000 offset=0x32100000 offset_bytes=839909376 region_va=0xfffaf2100000 region_pa=0x0000082c32100000
+tid=10 region=51 sorted_page=19 hugepage=12 huge_va=0xfffa80000000 huge_pa=0x0000082c40000000 offset=0x1d700000 offset_bytes=493879296 region_va=0xfffa9d700000 region_pa=0x0000082c5d700000
+tid=10 region=52 sorted_page=20 hugepage=11 huge_va=0xfffa40000000 huge_pa=0x0000082c80000000 offset=0x0c700000 offset_bytes=208666624 region_va=0xfffa4c700000 region_pa=0x0000082c8c700000
+tid=10 region=53 sorted_page=21 hugepage=10 huge_va=0xfffa00000000 huge_pa=0x0000082cc0000000 offset=0x2a600000 offset_bytes=710934528 region_va=0xfffa2a600000 region_pa=0x0000082cea600000
+tid=10 region=54 sorted_page=22 hugepage=9 huge_va=0xfff9c0000000 huge_pa=0x0000082d00000000 offset=0x30d00000 offset_bytes=818937856 region_va=0xfff9f0d00000 region_pa=0x0000082d30d00000
+tid=11 region=55 sorted_page=23 hugepage=8 huge_va=0xfff980000000 huge_pa=0x0000082d40000000 offset=0x18100000 offset_bytes=403701760 region_va=0xfff998100000 region_pa=0x0000082d58100000
+tid=11 region=56 sorted_page=24 hugepage=7 huge_va=0xfff940000000 huge_pa=0x0000082d80000000 offset=0x3fe00000 offset_bytes=1071644672 region_va=0xfff97fe00000 region_pa=0x0000082dbfe00000
+tid=11 region=57 sorted_page=25 hugepage=6 huge_va=0xfff900000000 huge_pa=0x0000082dc0000000 offset=0x02b00000 offset_bytes=45088768 region_va=0xfff902b00000 region_pa=0x0000082dc2b00000
+tid=11 region=58 sorted_page=26 hugepage=5 huge_va=0xfff8c0000000 huge_pa=0x0000082e00000000 offset=0x19100000 offset_bytes=420478976 region_va=0xfff8d9100000 region_pa=0x0000082e19100000
+tid=11 region=59 sorted_page=27 hugepage=4 huge_va=0xfff880000000 huge_pa=0x0000082e40000000 offset=0x08800000 offset_bytes=142606336 region_va=0xfff888800000 region_pa=0x0000082e48800000
+tid=12 region=60 sorted_page=28 hugepage=3 huge_va=0xfff840000000 huge_pa=0x0000082e80000000 offset=0x2bb00000 offset_bytes=732954624 region_va=0xfff86bb00000 region_pa=0x0000082eabb00000
+tid=12 region=61 sorted_page=29 hugepage=2 huge_va=0xfff800000000 huge_pa=0x0000082ec0000000 offset=0x15300000 offset_bytes=355467264 region_va=0xfff815300000 region_pa=0x0000082ed5300000
+tid=12 region=62 sorted_page=30 hugepage=1 huge_va=0xfff7c0000000 huge_pa=0x0000082f00000000 offset=0x08400000 offset_bytes=138412032 region_va=0xfff7c8400000 region_pa=0x0000082f08400000
+tid=12 region=63 sorted_page=31 hugepage=0 huge_va=0xfff780000000 huge_pa=0x0000082f40000000 offset=0x1d000000 offset_bytes=486539264 region_va=0xfff79d000000 region_pa=0x0000082f5d000000
+tid=12 region=64 sorted_page=0 hugepage=31 huge_va=0xffff40000000 huge_pa=0x0000082780000000 offset=0x03000000 offset_bytes=50331648 region_va=0xffff43000000 region_pa=0x0000082783000000
+tid=13 region=65 sorted_page=1 hugepage=30 huge_va=0xffff00000000 huge_pa=0x00000827c0000000 offset=0x3bc00000 offset_bytes=1002438656 region_va=0xffff3bc00000 region_pa=0x00000827fbc00000
+tid=13 region=66 sorted_page=2 hugepage=29 huge_va=0xfffec0000000 huge_pa=0x0000082800000000 offset=0x25700000 offset_bytes=628097024 region_va=0xfffee5700000 region_pa=0x0000082825700000
+tid=13 region=67 sorted_page=3 hugepage=28 huge_va=0xfffe80000000 huge_pa=0x0000082840000000 offset=0x2c500000 offset_bytes=743440384 region_va=0xfffeac500000 region_pa=0x000008286c500000
+tid=13 region=68 sorted_page=4 hugepage=27 huge_va=0xfffe40000000 huge_pa=0x0000082880000000 offset=0x08c00000 offset_bytes=146800640 region_va=0xfffe48c00000 region_pa=0x0000082888c00000
+tid=13 region=69 sorted_page=5 hugepage=26 huge_va=0xfffe00000000 huge_pa=0x00000828c0000000 offset=0x26700000 offset_bytes=644874240 region_va=0xfffe26700000 region_pa=0x00000828e6700000
+=== End of mapping ===
+STAGE_BEGIN round=3 mode=random seed=2 stage=warmup seconds=10 unix_time=1792373913
+STAGE_END round=3 mode=random seed=2 stage=warmup status=OK elapsed=10.003207 blocks=829738 covered_GiB=810.291016 covered_GiB_s=81.003125 load_GiB=12.660797
+STAGE_BEGIN round=3 mode=random seed=2 stage=measure seconds=10 unix_time=1792373923
+STAGE_END round=3 mode=random seed=2 stage=measure status=OK elapsed=10.000319 blocks=829930 covered_GiB=810.478516 covered_GiB_s=81.045269 load_GiB=12.663727
+TRIAL_END round=3 mode=random seed=2
+TRIAL_BEGIN round=19 mode=random seed=18
+mode=random seed=18 quarter_counts=[18,17,20,15]
+=== Selected region mapping (offsets are bytes) ===
+tid=0 region=0 sorted_page=0 hugepage=31 huge_va=0xffff40000000 huge_pa=0x0000082780000000 offset=0x03200000 offset_bytes=52428800 region_va=0xffff43200000 region_pa=0x0000082783200000
+tid=0 region=1 sorted_page=1 hugepage=30 huge_va=0xffff00000000 huge_pa=0x00000827c0000000 offset=0x01800000 offset_bytes=25165824 region_va=0xffff01800000 region_pa=0x00000827c1800000
+tid=0 region=2 sorted_page=2 hugepage=29 huge_va=0xfffec0000000 huge_pa=0x0000082800000000 offset=0x06200000 offset_bytes=102760448 region_va=0xfffec6200000 region_pa=0x0000082806200000
+tid=0 region=3 sorted_page=3 hugepage=28 huge_va=0xfffe80000000 huge_pa=0x0000082840000000 offset=0x3a000000 offset_bytes=973078528 region_va=0xfffeba000000 region_pa=0x000008287a000000
+tid=0 region=4 sorted_page=4 hugepage=27 huge_va=0xfffe40000000 huge_pa=0x0000082880000000 offset=0x39600000 offset_bytes=962592768 region_va=0xfffe79600000 region_pa=0x00000828b9600000
+tid=1 region=5 sorted_page=5 hugepage=26 huge_va=0xfffe00000000 huge_pa=0x00000828c0000000 offset=0x2d900000 offset_bytes=764411904 region_va=0xfffe2d900000 region_pa=0x00000828ed900000
+tid=1 region=6 sorted_page=6 hugepage=25 huge_va=0xfffdc0000000 huge_pa=0x0000082900000000 offset=0x11200000 offset_bytes=287309824 region_va=0xfffdd1200000 region_pa=0x0000082911200000
+tid=1 region=7 sorted_page=7 hugepage=24 huge_va=0xfffd80000000 huge_pa=0x0000082940000000 offset=0x18600000 offset_bytes=408944640 region_va=0xfffd98600000 region_pa=0x0000082958600000
+tid=1 region=8 sorted_page=8 hugepage=23 huge_va=0xfffd40000000 huge_pa=0x0000082980000000 offset=0x09400000 offset_bytes=155189248 region_va=0xfffd49400000 region_pa=0x0000082989400000
+tid=1 region=9 sorted_page=9 hugepage=22 huge_va=0xfffd00000000 huge_pa=0x00000829c0000000 offset=0x23d00000 offset_bytes=600834048 region_va=0xfffd23d00000 region_pa=0x00000829e3d00000
+tid=2 region=10 sorted_page=10 hugepage=21 huge_va=0xfffcc0000000 huge_pa=0x0000082a00000000 offset=0x39000000 offset_bytes=956301312 region_va=0xfffcf9000000 region_pa=0x0000082a39000000
+tid=2 region=11 sorted_page=11 hugepage=20 huge_va=0xfffc80000000 huge_pa=0x0000082a40000000 offset=0x06000000 offset_bytes=100663296 region_va=0xfffc86000000 region_pa=0x0000082a46000000
+tid=2 region=12 sorted_page=12 hugepage=19 huge_va=0xfffc40000000 huge_pa=0x0000082a80000000 offset=0x29e00000 offset_bytes=702545920 region_va=0xfffc69e00000 region_pa=0x0000082aa9e00000
+tid=2 region=13 sorted_page=13 hugepage=18 huge_va=0xfffc00000000 huge_pa=0x0000082ac0000000 offset=0x3f500000 offset_bytes=1062207488 region_va=0xfffc3f500000 region_pa=0x0000082aff500000
+tid=2 region=14 sorted_page=14 hugepage=17 huge_va=0xfffbc0000000 huge_pa=0x0000082b00000000 offset=0x35d00000 offset_bytes=902823936 region_va=0xfffbf5d00000 region_pa=0x0000082b35d00000
+tid=3 region=15 sorted_page=15 hugepage=16 huge_va=0xfffb80000000 huge_pa=0x0000082b40000000 offset=0x2d600000 offset_bytes=761266176 region_va=0xfffbad600000 region_pa=0x0000082b6d600000
+tid=3 region=16 sorted_page=16 hugepage=15 huge_va=0xfffb40000000 huge_pa=0x0000082b80000000 offset=0x02200000 offset_bytes=35651584 region_va=0xfffb42200000 region_pa=0x0000082b82200000
+tid=3 region=17 sorted_page=17 hugepage=14 huge_va=0xfffb00000000 huge_pa=0x0000082bc0000000 offset=0x2e700000 offset_bytes=779091968 region_va=0xfffb2e700000 region_pa=0x0000082bee700000
+tid=3 region=18 sorted_page=18 hugepage=13 huge_va=0xfffac0000000 huge_pa=0x0000082c00000000 offset=0x3ca00000 offset_bytes=1017118720 region_va=0xfffafca00000 region_pa=0x0000082c3ca00000
+tid=3 region=19 sorted_page=19 hugepage=12 huge_va=0xfffa80000000 huge_pa=0x0000082c40000000 offset=0x27c00000 offset_bytes=666894336 region_va=0xfffaa7c00000 region_pa=0x0000082c67c00000
+tid=4 region=20 sorted_page=20 hugepage=11 huge_va=0xfffa40000000 huge_pa=0x0000082c80000000 offset=0x1f500000 offset_bytes=525336576 region_va=0xfffa5f500000 region_pa=0x0000082c9f500000
+tid=4 region=21 sorted_page=21 hugepage=10 huge_va=0xfffa00000000 huge_pa=0x0000082cc0000000 offset=0x2d500000 offset_bytes=760217600 region_va=0xfffa2d500000 region_pa=0x0000082ced500000
+tid=4 region=22 sorted_page=22 hugepage=9 huge_va=0xfff9c0000000 huge_pa=0x0000082d00000000 offset=0x15600000 offset_bytes=358612992 region_va=0xfff9d5600000 region_pa=0x0000082d15600000
+tid=4 region=23 sorted_page=23 hugepage=8 huge_va=0xfff980000000 huge_pa=0x0000082d40000000 offset=0x21700000 offset_bytes=560988160 region_va=0xfff9a1700000 region_pa=0x0000082d61700000
+tid=4 region=24 sorted_page=24 hugepage=7 huge_va=0xfff940000000 huge_pa=0x0000082d80000000 offset=0x29300000 offset_bytes=691011584 region_va=0xfff969300000 region_pa=0x0000082da9300000
+tid=5 region=25 sorted_page=25 hugepage=6 huge_va=0xfff900000000 huge_pa=0x0000082dc0000000 offset=0x14a00000 offset_bytes=346030080 region_va=0xfff914a00000 region_pa=0x0000082dd4a00000
+tid=5 region=26 sorted_page=26 hugepage=5 huge_va=0xfff8c0000000 huge_pa=0x0000082e00000000 offset=0x0e100000 offset_bytes=235929600 region_va=0xfff8ce100000 region_pa=0x0000082e0e100000
+tid=5 region=27 sorted_page=27 hugepage=4 huge_va=0xfff880000000 huge_pa=0x0000082e40000000 offset=0x02900000 offset_bytes=42991616 region_va=0xfff882900000 region_pa=0x0000082e42900000
+tid=5 region=28 sorted_page=28 hugepage=3 huge_va=0xfff840000000 huge_pa=0x0000082e80000000 offset=0x22e00000 offset_bytes=585105408 region_va=0xfff862e00000 region_pa=0x0000082ea2e00000
+tid=5 region=29 sorted_page=29 hugepage=2 huge_va=0xfff800000000 huge_pa=0x0000082ec0000000 offset=0x07800000 offset_bytes=125829120 region_va=0xfff807800000 region_pa=0x0000082ec7800000
+tid=6 region=30 sorted_page=30 hugepage=1 huge_va=0xfff7c0000000 huge_pa=0x0000082f00000000 offset=0x18300000 offset_bytes=405798912 region_va=0xfff7d8300000 region_pa=0x0000082f18300000
+tid=6 region=31 sorted_page=31 hugepage=0 huge_va=0xfff780000000 huge_pa=0x0000082f40000000 offset=0x2e200000 offset_bytes=773849088 region_va=0xfff7ae200000 region_pa=0x0000082f6e200000
+tid=6 region=32 sorted_page=0 hugepage=31 huge_va=0xffff40000000 huge_pa=0x0000082780000000 offset=0x08300000 offset_bytes=137363456 region_va=0xffff48300000 region_pa=0x0000082788300000
+tid=6 region=33 sorted_page=1 hugepage=30 huge_va=0xffff00000000 huge_pa=0x00000827c0000000 offset=0x15200000 offset_bytes=354418688 region_va=0xffff15200000 region_pa=0x00000827d5200000
+tid=6 region=34 sorted_page=2 hugepage=29 huge_va=0xfffec0000000 huge_pa=0x0000082800000000 offset=0x3d200000 offset_bytes=1025507328 region_va=0xfffefd200000 region_pa=0x000008283d200000
+tid=7 region=35 sorted_page=3 hugepage=28 huge_va=0xfffe80000000 huge_pa=0x0000082840000000 offset=0x0f800000 offset_bytes=260046848 region_va=0xfffe8f800000 region_pa=0x000008284f800000
+tid=7 region=36 sorted_page=4 hugepage=27 huge_va=0xfffe40000000 huge_pa=0x0000082880000000 offset=0x1da00000 offset_bytes=497025024 region_va=0xfffe5da00000 region_pa=0x000008289da00000
+tid=7 region=37 sorted_page=5 hugepage=26 huge_va=0xfffe00000000 huge_pa=0x00000828c0000000 offset=0x36c00000 offset_bytes=918552576 region_va=0xfffe36c00000 region_pa=0x00000828f6c00000
+tid=7 region=38 sorted_page=6 hugepage=25 huge_va=0xfffdc0000000 huge_pa=0x0000082900000000 offset=0x39a00000 offset_bytes=966787072 region_va=0xfffdf9a00000 region_pa=0x0000082939a00000
+tid=7 region=39 sorted_page=7 hugepage=24 huge_va=0xfffd80000000 huge_pa=0x0000082940000000 offset=0x2cf00000 offset_bytes=753926144 region_va=0xfffdacf00000 region_pa=0x000008296cf00000
+tid=8 region=40 sorted_page=8 hugepage=23 huge_va=0xfffd40000000 huge_pa=0x0000082980000000 offset=0x27600000 offset_bytes=660602880 region_va=0xfffd67600000 region_pa=0x00000829a7600000
+tid=8 region=41 sorted_page=9 hugepage=22 huge_va=0xfffd00000000 huge_pa=0x00000829c0000000 offset=0x1ad00000 offset_bytes=449839104 region_va=0xfffd1ad00000 region_pa=0x00000829dad00000
+tid=8 region=42 sorted_page=10 hugepage=21 huge_va=0xfffcc0000000 huge_pa=0x0000082a00000000 offset=0x37200000 offset_bytes=924844032 region_va=0xfffcf7200000 region_pa=0x0000082a37200000
+tid=8 region=43 sorted_page=11 hugepage=20 huge_va=0xfffc80000000 huge_pa=0x0000082a40000000 offset=0x0c700000 offset_bytes=208666624 region_va=0xfffc8c700000 region_pa=0x0000082a4c700000
+tid=8 region=44 sorted_page=12 hugepage=19 huge_va=0xfffc40000000 huge_pa=0x0000082a80000000 offset=0x0db00000 offset_bytes=229638144 region_va=0xfffc4db00000 region_pa=0x0000082a8db00000
+tid=9 region=45 sorted_page=13 hugepage=18 huge_va=0xfffc00000000 huge_pa=0x0000082ac0000000 offset=0x03e00000 offset_bytes=65011712 region_va=0xfffc03e00000 region_pa=0x0000082ac3e00000
+tid=9 region=46 sorted_page=14 hugepage=17 huge_va=0xfffbc0000000 huge_pa=0x0000082b00000000 offset=0x36e00000 offset_bytes=920649728 region_va=0xfffbf6e00000 region_pa=0x0000082b36e00000
+tid=9 region=47 sorted_page=15 hugepage=16 huge_va=0xfffb80000000 huge_pa=0x0000082b40000000 offset=0x30900000 offset_bytes=814743552 region_va=0xfffbb0900000 region_pa=0x0000082b70900000
+tid=9 region=48 sorted_page=16 hugepage=15 huge_va=0xfffb40000000 huge_pa=0x0000082b80000000 offset=0x23800000 offset_bytes=595591168 region_va=0xfffb63800000 region_pa=0x0000082ba3800000
+tid=9 region=49 sorted_page=17 hugepage=14 huge_va=0xfffb00000000 huge_pa=0x0000082bc0000000 offset=0x17500000 offset_bytes=391118848 region_va=0xfffb17500000 region_pa=0x0000082bd7500000
+tid=10 region=50 sorted_page=18 hugepage=13 huge_va=0xfffac0000000 huge_pa=0x0000082c00000000 offset=0x2b900000 offset_bytes=730857472 region_va=0xfffaeb900000 region_pa=0x0000082c2b900000
+tid=10 region=51 sorted_page=19 hugepage=12 huge_va=0xfffa80000000 huge_pa=0x0000082c40000000 offset=0x18400000 offset_bytes=406847488 region_va=0xfffa98400000 region_pa=0x0000082c58400000
+tid=10 region=52 sorted_page=20 hugepage=11 huge_va=0xfffa40000000 huge_pa=0x0000082c80000000 offset=0x17b00000 offset_bytes=397410304 region_va=0xfffa57b00000 region_pa=0x0000082c97b00000
+tid=10 region=53 sorted_page=21 hugepage=10 huge_va=0xfffa00000000 huge_pa=0x0000082cc0000000 offset=0x0b200000 offset_bytes=186646528 region_va=0xfffa0b200000 region_pa=0x0000082ccb200000
+tid=10 region=54 sorted_page=22 hugepage=9 huge_va=0xfff9c0000000 huge_pa=0x0000082d00000000 offset=0x3fd00000 offset_bytes=1070596096 region_va=0xfff9ffd00000 region_pa=0x0000082d3fd00000
+tid=11 region=55 sorted_page=23 hugepage=8 huge_va=0xfff980000000 huge_pa=0x0000082d40000000 offset=0x10600000 offset_bytes=274726912 region_va=0xfff990600000 region_pa=0x0000082d50600000
+tid=11 region=56 sorted_page=24 hugepage=7 huge_va=0xfff940000000 huge_pa=0x0000082d80000000 offset=0x26b00000 offset_bytes=649068544 region_va=0xfff966b00000 region_pa=0x0000082da6b00000
+tid=11 region=57 sorted_page=25 hugepage=6 huge_va=0xfff900000000 huge_pa=0x0000082dc0000000 offset=0x27c00000 offset_bytes=666894336 region_va=0xfff927c00000 region_pa=0x0000082de7c00000
+tid=11 region=58 sorted_page=26 hugepage=5 huge_va=0xfff8c0000000 huge_pa=0x0000082e00000000 offset=0x16b00000 offset_bytes=380633088 region_va=0xfff8d6b00000 region_pa=0x0000082e16b00000
+tid=11 region=59 sorted_page=27 hugepage=4 huge_va=0xfff880000000 huge_pa=0x0000082e40000000 offset=0x3d300000 offset_bytes=1026555904 region_va=0xfff8bd300000 region_pa=0x0000082e7d300000
+tid=12 region=60 sorted_page=28 hugepage=3 huge_va=0xfff840000000 huge_pa=0x0000082e80000000 offset=0x2fb00000 offset_bytes=800063488 region_va=0xfff86fb00000 region_pa=0x0000082eafb00000
+tid=12 region=61 sorted_page=29 hugepage=2 huge_va=0xfff800000000 huge_pa=0x0000082ec0000000 offset=0x24f00000 offset_bytes=619708416 region_va=0xfff824f00000 region_pa=0x0000082ee4f00000
+tid=12 region=62 sorted_page=30 hugepage=1 huge_va=0xfff7c0000000 huge_pa=0x0000082f00000000 offset=0x12400000 offset_bytes=306184192 region_va=0xfff7d2400000 region_pa=0x0000082f12400000
+tid=12 region=63 sorted_page=31 hugepage=0 huge_va=0xfff780000000 huge_pa=0x0000082f40000000 offset=0x30800000 offset_bytes=813694976 region_va=0xfff7b0800000 region_pa=0x0000082f70800000
+tid=12 region=64 sorted_page=0 hugepage=31 huge_va=0xffff40000000 huge_pa=0x0000082780000000 offset=0x1fa00000 offset_bytes=530579456 region_va=0xffff5fa00000 region_pa=0x000008279fa00000
+tid=13 region=65 sorted_page=1 hugepage=30 huge_va=0xffff00000000 huge_pa=0x00000827c0000000 offset=0x0a100000 offset_bytes=168820736 region_va=0xffff0a100000 region_pa=0x00000827ca100000
+tid=13 region=66 sorted_page=2 hugepage=29 huge_va=0xfffec0000000 huge_pa=0x0000082800000000 offset=0x0f400000 offset_bytes=255852544 region_va=0xfffecf400000 region_pa=0x000008280f400000
+tid=13 region=67 sorted_page=3 hugepage=28 huge_va=0xfffe80000000 huge_pa=0x0000082840000000 offset=0x29800000 offset_bytes=696254464 region_va=0xfffea9800000 region_pa=0x0000082869800000
+tid=13 region=68 sorted_page=4 hugepage=27 huge_va=0xfffe40000000 huge_pa=0x0000082880000000 offset=0x0e600000 offset_bytes=241172480 region_va=0xfffe4e600000 region_pa=0x000008288e600000
+tid=13 region=69 sorted_page=5 hugepage=26 huge_va=0xfffe00000000 huge_pa=0x00000828c0000000 offset=0x1d400000 offset_bytes=490733568 region_va=0xfffe1d400000 region_pa=0x00000828dd400000
+=== End of mapping ===
+STAGE_BEGIN round=19 mode=random seed=18 stage=warmup seconds=10 unix_time=1792374233
+STAGE_END round=19 mode=random seed=18 stage=warmup status=OK elapsed=10.003424 blocks=836401 covered_GiB=816.797852 covered_GiB_s=81.651826 load_GiB=12.762466
+STAGE_BEGIN round=19 mode=random seed=18 stage=measure seconds=10 unix_time=1792374243
+STAGE_END round=19 mode=random seed=18 stage=measure status=OK elapsed=10.003516 blocks=836708 covered_GiB=817.097656 covered_GiB_s=81.681043 load_GiB=12.767151
+TRIAL_END round=19 mode=random seed=18
+TRIAL_BEGIN round=30 mode=random seed=29
+mode=random seed=29 quarter_counts=[14,18,19,19]
+=== Selected region mapping (offsets are bytes) ===
+tid=0 region=0 sorted_page=0 hugepage=31 huge_va=0xffff40000000 huge_pa=0x0000082780000000 offset=0x37000000 offset_bytes=922746880 region_va=0xffff77000000 region_pa=0x00000827b7000000
+tid=0 region=1 sorted_page=1 hugepage=30 huge_va=0xffff00000000 huge_pa=0x00000827c0000000 offset=0x11a00000 offset_bytes=295698432 region_va=0xffff11a00000 region_pa=0x00000827d1a00000
+tid=0 region=2 sorted_page=2 hugepage=29 huge_va=0xfffec0000000 huge_pa=0x0000082800000000 offset=0x08700000 offset_bytes=141557760 region_va=0xfffec8700000 region_pa=0x0000082808700000
+tid=0 region=3 sorted_page=3 hugepage=28 huge_va=0xfffe80000000 huge_pa=0x0000082840000000 offset=0x19800000 offset_bytes=427819008 region_va=0xfffe99800000 region_pa=0x0000082859800000
+tid=0 region=4 sorted_page=4 hugepage=27 huge_va=0xfffe40000000 huge_pa=0x0000082880000000 offset=0x28900000 offset_bytes=680525824 region_va=0xfffe68900000 region_pa=0x00000828a8900000
+tid=1 region=5 sorted_page=5 hugepage=26 huge_va=0xfffe00000000 huge_pa=0x00000828c0000000 offset=0x3ff00000 offset_bytes=1072693248 region_va=0xfffe3ff00000 region_pa=0x00000828fff00000
+tid=1 region=6 sorted_page=6 hugepage=25 huge_va=0xfffdc0000000 huge_pa=0x0000082900000000 offset=0x20600000 offset_bytes=543162368 region_va=0xfffde0600000 region_pa=0x0000082920600000
+tid=1 region=7 sorted_page=7 hugepage=24 huge_va=0xfffd80000000 huge_pa=0x0000082940000000 offset=0x12400000 offset_bytes=306184192 region_va=0xfffd92400000 region_pa=0x0000082952400000
+tid=1 region=8 sorted_page=8 hugepage=23 huge_va=0xfffd40000000 huge_pa=0x0000082980000000 offset=0x17800000 offset_bytes=394264576 region_va=0xfffd57800000 region_pa=0x0000082997800000
+tid=1 region=9 sorted_page=9 hugepage=22 huge_va=0xfffd00000000 huge_pa=0x00000829c0000000 offset=0x1ee00000 offset_bytes=517996544 region_va=0xfffd1ee00000 region_pa=0x00000829dee00000
+tid=2 region=10 sorted_page=10 hugepage=21 huge_va=0xfffcc0000000 huge_pa=0x0000082a00000000 offset=0x30c00000 offset_bytes=817889280 region_va=0xfffcf0c00000 region_pa=0x0000082a30c00000
+tid=2 region=11 sorted_page=11 hugepage=20 huge_va=0xfffc80000000 huge_pa=0x0000082a40000000 offset=0x03c00000 offset_bytes=62914560 region_va=0xfffc83c00000 region_pa=0x0000082a43c00000
+tid=2 region=12 sorted_page=12 hugepage=19 huge_va=0xfffc40000000 huge_pa=0x0000082a80000000 offset=0x35a00000 offset_bytes=899678208 region_va=0xfffc75a00000 region_pa=0x0000082ab5a00000
+tid=2 region=13 sorted_page=13 hugepage=18 huge_va=0xfffc00000000 huge_pa=0x0000082ac0000000 offset=0x19600000 offset_bytes=425721856 region_va=0xfffc19600000 region_pa=0x0000082ad9600000
+tid=2 region=14 sorted_page=14 hugepage=17 huge_va=0xfffbc0000000 huge_pa=0x0000082b00000000 offset=0x1ff00000 offset_bytes=535822336 region_va=0xfffbdff00000 region_pa=0x0000082b1ff00000
+tid=3 region=15 sorted_page=15 hugepage=16 huge_va=0xfffb80000000 huge_pa=0x0000082b40000000 offset=0x3c500000 offset_bytes=1011875840 region_va=0xfffbbc500000 region_pa=0x0000082b7c500000
+tid=3 region=16 sorted_page=16 hugepage=15 huge_va=0xfffb40000000 huge_pa=0x0000082b80000000 offset=0x2bc00000 offset_bytes=734003200 region_va=0xfffb6bc00000 region_pa=0x0000082babc00000
+tid=3 region=17 sorted_page=17 hugepage=14 huge_va=0xfffb00000000 huge_pa=0x0000082bc0000000 offset=0x17700000 offset_bytes=393216000 region_va=0xfffb17700000 region_pa=0x0000082bd7700000
+tid=3 region=18 sorted_page=18 hugepage=13 huge_va=0xfffac0000000 huge_pa=0x0000082c00000000 offset=0x1a800000 offset_bytes=444596224 region_va=0xfffada800000 region_pa=0x0000082c1a800000
+tid=3 region=19 sorted_page=19 hugepage=12 huge_va=0xfffa80000000 huge_pa=0x0000082c40000000 offset=0x08200000 offset_bytes=136314880 region_va=0xfffa88200000 region_pa=0x0000082c48200000
+tid=4 region=20 sorted_page=20 hugepage=11 huge_va=0xfffa40000000 huge_pa=0x0000082c80000000 offset=0x1e100000 offset_bytes=504365056 region_va=0xfffa5e100000 region_pa=0x0000082c9e100000
+tid=4 region=21 sorted_page=21 hugepage=10 huge_va=0xfffa00000000 huge_pa=0x0000082cc0000000 offset=0x12d00000 offset_bytes=315621376 region_va=0xfffa12d00000 region_pa=0x0000082cd2d00000
+tid=4 region=22 sorted_page=22 hugepage=9 huge_va=0xfff9c0000000 huge_pa=0x0000082d00000000 offset=0x32600000 offset_bytes=845152256 region_va=0xfff9f2600000 region_pa=0x0000082d32600000
+tid=4 region=23 sorted_page=23 hugepage=8 huge_va=0xfff980000000 huge_pa=0x0000082d40000000 offset=0x29c00000 offset_bytes=700448768 region_va=0xfff9a9c00000 region_pa=0x0000082d69c00000
+tid=4 region=24 sorted_page=24 hugepage=7 huge_va=0xfff940000000 huge_pa=0x0000082d80000000 offset=0x03500000 offset_bytes=55574528 region_va=0xfff943500000 region_pa=0x0000082d83500000
+tid=5 region=25 sorted_page=25 hugepage=6 huge_va=0xfff900000000 huge_pa=0x0000082dc0000000 offset=0x32f00000 offset_bytes=854589440 region_va=0xfff932f00000 region_pa=0x0000082df2f00000
+tid=5 region=26 sorted_page=26 hugepage=5 huge_va=0xfff8c0000000 huge_pa=0x0000082e00000000 offset=0x12e00000 offset_bytes=316669952 region_va=0xfff8d2e00000 region_pa=0x0000082e12e00000
+tid=5 region=27 sorted_page=27 hugepage=4 huge_va=0xfff880000000 huge_pa=0x0000082e40000000 offset=0x35400000 offset_bytes=893386752 region_va=0xfff8b5400000 region_pa=0x0000082e75400000
+tid=5 region=28 sorted_page=28 hugepage=3 huge_va=0xfff840000000 huge_pa=0x0000082e80000000 offset=0x25e00000 offset_bytes=635437056 region_va=0xfff865e00000 region_pa=0x0000082ea5e00000
+tid=5 region=29 sorted_page=29 hugepage=2 huge_va=0xfff800000000 huge_pa=0x0000082ec0000000 offset=0x0f000000 offset_bytes=251658240 region_va=0xfff80f000000 region_pa=0x0000082ecf000000
+tid=6 region=30 sorted_page=30 hugepage=1 huge_va=0xfff7c0000000 huge_pa=0x0000082f00000000 offset=0x01c00000 offset_bytes=29360128 region_va=0xfff7c1c00000 region_pa=0x0000082f01c00000
+tid=6 region=31 sorted_page=31 hugepage=0 huge_va=0xfff780000000 huge_pa=0x0000082f40000000 offset=0x1f300000 offset_bytes=523239424 region_va=0xfff79f300000 region_pa=0x0000082f5f300000
+tid=6 region=32 sorted_page=0 hugepage=31 huge_va=0xffff40000000 huge_pa=0x0000082780000000 offset=0x04600000 offset_bytes=73400320 region_va=0xffff44600000 region_pa=0x0000082784600000
+tid=6 region=33 sorted_page=1 hugepage=30 huge_va=0xffff00000000 huge_pa=0x00000827c0000000 offset=0x36e00000 offset_bytes=920649728 region_va=0xffff36e00000 region_pa=0x00000827f6e00000
+tid=6 region=34 sorted_page=2 hugepage=29 huge_va=0xfffec0000000 huge_pa=0x0000082800000000 offset=0x28900000 offset_bytes=680525824 region_va=0xfffee8900000 region_pa=0x0000082828900000
+tid=7 region=35 sorted_page=3 hugepage=28 huge_va=0xfffe80000000 huge_pa=0x0000082840000000 offset=0x3c800000 offset_bytes=1015021568 region_va=0xfffebc800000 region_pa=0x000008287c800000
+tid=7 region=36 sorted_page=4 hugepage=27 huge_va=0xfffe40000000 huge_pa=0x0000082880000000 offset=0x2da00000 offset_bytes=765460480 region_va=0xfffe6da00000 region_pa=0x00000828ada00000
+tid=7 region=37 sorted_page=5 hugepage=26 huge_va=0xfffe00000000 huge_pa=0x00000828c0000000 offset=0x00700000 offset_bytes=7340032 region_va=0xfffe00700000 region_pa=0x00000828c0700000
+tid=7 region=38 sorted_page=6 hugepage=25 huge_va=0xfffdc0000000 huge_pa=0x0000082900000000 offset=0x39c00000 offset_bytes=968884224 region_va=0xfffdf9c00000 region_pa=0x0000082939c00000
+tid=7 region=39 sorted_page=7 hugepage=24 huge_va=0xfffd80000000 huge_pa=0x0000082940000000 offset=0x29300000 offset_bytes=691011584 region_va=0xfffda9300000 region_pa=0x0000082969300000
+tid=8 region=40 sorted_page=8 hugepage=23 huge_va=0xfffd40000000 huge_pa=0x0000082980000000 offset=0x23d00000 offset_bytes=600834048 region_va=0xfffd63d00000 region_pa=0x00000829a3d00000
+tid=8 region=41 sorted_page=9 hugepage=22 huge_va=0xfffd00000000 huge_pa=0x00000829c0000000 offset=0x3ea00000 offset_bytes=1050673152 region_va=0xfffd3ea00000 region_pa=0x00000829fea00000
+tid=8 region=42 sorted_page=10 hugepage=21 huge_va=0xfffcc0000000 huge_pa=0x0000082a00000000 offset=0x01000000 offset_bytes=16777216 region_va=0xfffcc1000000 region_pa=0x0000082a01000000
+tid=8 region=43 sorted_page=11 hugepage=20 huge_va=0xfffc80000000 huge_pa=0x0000082a40000000 offset=0x31b00000 offset_bytes=833617920 region_va=0xfffcb1b00000 region_pa=0x0000082a71b00000
+tid=8 region=44 sorted_page=12 hugepage=19 huge_va=0xfffc40000000 huge_pa=0x0000082a80000000 offset=0x14b00000 offset_bytes=347078656 region_va=0xfffc54b00000 region_pa=0x0000082a94b00000
+tid=9 region=45 sorted_page=13 hugepage=18 huge_va=0xfffc00000000 huge_pa=0x0000082ac0000000 offset=0x2b800000 offset_bytes=729808896 region_va=0xfffc2b800000 region_pa=0x0000082aeb800000
+tid=9 region=46 sorted_page=14 hugepage=17 huge_va=0xfffbc0000000 huge_pa=0x0000082b00000000 offset=0x01400000 offset_bytes=20971520 region_va=0xfffbc1400000 region_pa=0x0000082b01400000
+tid=9 region=47 sorted_page=15 hugepage=16 huge_va=0xfffb80000000 huge_pa=0x0000082b40000000 offset=0x04500000 offset_bytes=72351744 region_va=0xfffb84500000 region_pa=0x0000082b44500000
+tid=9 region=48 sorted_page=16 hugepage=15 huge_va=0xfffb40000000 huge_pa=0x0000082b80000000 offset=0x1b300000 offset_bytes=456130560 region_va=0xfffb5b300000 region_pa=0x0000082b9b300000
+tid=9 region=49 sorted_page=17 hugepage=14 huge_va=0xfffb00000000 huge_pa=0x0000082bc0000000 offset=0x37a00000 offset_bytes=933232640 region_va=0xfffb37a00000 region_pa=0x0000082bf7a00000
+tid=10 region=50 sorted_page=18 hugepage=13 huge_va=0xfffac0000000 huge_pa=0x0000082c00000000 offset=0x0ff00000 offset_bytes=267386880 region_va=0xfffacff00000 region_pa=0x0000082c0ff00000
+tid=10 region=51 sorted_page=19 hugepage=12 huge_va=0xfffa80000000 huge_pa=0x0000082c40000000 offset=0x3f800000 offset_bytes=1065353216 region_va=0xfffabf800000 region_pa=0x0000082c7f800000
+tid=10 region=52 sorted_page=20 hugepage=11 huge_va=0xfffa40000000 huge_pa=0x0000082c80000000 offset=0x25000000 offset_bytes=620756992 region_va=0xfffa65000000 region_pa=0x0000082ca5000000
+tid=10 region=53 sorted_page=21 hugepage=10 huge_va=0xfffa00000000 huge_pa=0x0000082cc0000000 offset=0x27c00000 offset_bytes=666894336 region_va=0xfffa27c00000 region_pa=0x0000082ce7c00000
+tid=10 region=54 sorted_page=22 hugepage=9 huge_va=0xfff9c0000000 huge_pa=0x0000082d00000000 offset=0x1b700000 offset_bytes=460324864 region_va=0xfff9db700000 region_pa=0x0000082d1b700000
+tid=11 region=55 sorted_page=23 hugepage=8 huge_va=0xfff980000000 huge_pa=0x0000082d40000000 offset=0x00400000 offset_bytes=4194304 region_va=0xfff980400000 region_pa=0x0000082d40400000
+tid=11 region=56 sorted_page=24 hugepage=7 huge_va=0xfff940000000 huge_pa=0x0000082d80000000 offset=0x29000000 offset_bytes=687865856 region_va=0xfff969000000 region_pa=0x0000082da9000000
+tid=11 region=57 sorted_page=25 hugepage=6 huge_va=0xfff900000000 huge_pa=0x0000082dc0000000 offset=0x11700000 offset_bytes=292552704 region_va=0xfff911700000 region_pa=0x0000082dd1700000
+tid=11 region=58 sorted_page=26 hugepage=5 huge_va=0xfff8c0000000 huge_pa=0x0000082e00000000 offset=0x2f200000 offset_bytes=790626304 region_va=0xfff8ef200000 region_pa=0x0000082e2f200000
+tid=11 region=59 sorted_page=27 hugepage=4 huge_va=0xfff880000000 huge_pa=0x0000082e40000000 offset=0x23b00000 offset_bytes=598736896 region_va=0xfff8a3b00000 region_pa=0x0000082e63b00000
+tid=12 region=60 sorted_page=28 hugepage=3 huge_va=0xfff840000000 huge_pa=0x0000082e80000000 offset=0x20600000 offset_bytes=543162368 region_va=0xfff860600000 region_pa=0x0000082ea0600000
+tid=12 region=61 sorted_page=29 hugepage=2 huge_va=0xfff800000000 huge_pa=0x0000082ec0000000 offset=0x27a00000 offset_bytes=664797184 region_va=0xfff827a00000 region_pa=0x0000082ee7a00000
+tid=12 region=62 sorted_page=30 hugepage=1 huge_va=0xfff7c0000000 huge_pa=0x0000082f00000000 offset=0x20a00000 offset_bytes=547356672 region_va=0xfff7e0a00000 region_pa=0x0000082f20a00000
+tid=12 region=63 sorted_page=31 hugepage=0 huge_va=0xfff780000000 huge_pa=0x0000082f40000000 offset=0x3ce00000 offset_bytes=1021313024 region_va=0xfff7bce00000 region_pa=0x0000082f7ce00000
+tid=12 region=64 sorted_page=0 hugepage=31 huge_va=0xffff40000000 huge_pa=0x0000082780000000 offset=0x3f800000 offset_bytes=1065353216 region_va=0xffff7f800000 region_pa=0x00000827bf800000
+tid=13 region=65 sorted_page=1 hugepage=30 huge_va=0xffff00000000 huge_pa=0x00000827c0000000 offset=0x21200000 offset_bytes=555745280 region_va=0xffff21200000 region_pa=0x00000827e1200000
+tid=13 region=66 sorted_page=2 hugepage=29 huge_va=0xfffec0000000 huge_pa=0x0000082800000000 offset=0x3fa00000 offset_bytes=1067450368 region_va=0xfffeffa00000 region_pa=0x000008283fa00000
+tid=13 region=67 sorted_page=3 hugepage=28 huge_va=0xfffe80000000 huge_pa=0x0000082840000000 offset=0x15800000 offset_bytes=360710144 region_va=0xfffe95800000 region_pa=0x0000082855800000
+tid=13 region=68 sorted_page=4 hugepage=27 huge_va=0xfffe40000000 huge_pa=0x0000082880000000 offset=0x02f00000 offset_bytes=49283072 region_va=0xfffe42f00000 region_pa=0x0000082882f00000
+tid=13 region=69 sorted_page=5 hugepage=26 huge_va=0xfffe00000000 huge_pa=0x00000828c0000000 offset=0x3f900000 offset_bytes=1066401792 region_va=0xfffe3f900000 region_pa=0x00000828ff900000
+=== End of mapping ===
+STAGE_BEGIN round=30 mode=random seed=29 stage=warmup seconds=10 unix_time=1792374453
+STAGE_END round=30 mode=random seed=29 stage=warmup status=OK elapsed=10.003410 blocks=829478 covered_GiB=810.037109 covered_GiB_s=80.976096 load_GiB=12.656830
+STAGE_BEGIN round=30 mode=random seed=29 stage=measure seconds=10 unix_time=1792374463
+STAGE_END round=30 mode=random seed=29 stage=measure status=OK elapsed=10.002795 blocks=829948 covered_GiB=810.496094 covered_GiB_s=81.026966 load_GiB=12.664001
+TRIAL_END round=30 mode=random seed=29
+TRIAL_BEGIN round=33 mode=random seed=32
+mode=random seed=32 quarter_counts=[22,12,16,20]
+=== Selected region mapping (offsets are bytes) ===
+tid=0 region=0 sorted_page=0 hugepage=31 huge_va=0xffff40000000 huge_pa=0x0000082780000000 offset=0x00100000 offset_bytes=1048576 region_va=0xffff40100000 region_pa=0x0000082780100000
+tid=0 region=1 sorted_page=1 hugepage=30 huge_va=0xffff00000000 huge_pa=0x00000827c0000000 offset=0x1e400000 offset_bytes=507510784 region_va=0xffff1e400000 region_pa=0x00000827de400000
+tid=0 region=2 sorted_page=2 hugepage=29 huge_va=0xfffec0000000 huge_pa=0x0000082800000000 offset=0x0d900000 offset_bytes=227540992 region_va=0xfffecd900000 region_pa=0x000008280d900000
+tid=0 region=3 sorted_page=3 hugepage=28 huge_va=0xfffe80000000 huge_pa=0x0000082840000000 offset=0x08700000 offset_bytes=141557760 region_va=0xfffe88700000 region_pa=0x0000082848700000
+tid=0 region=4 sorted_page=4 hugepage=27 huge_va=0xfffe40000000 huge_pa=0x0000082880000000 offset=0x28f00000 offset_bytes=686817280 region_va=0xfffe68f00000 region_pa=0x00000828a8f00000
+tid=1 region=5 sorted_page=5 hugepage=26 huge_va=0xfffe00000000 huge_pa=0x00000828c0000000 offset=0x3a900000 offset_bytes=982515712 region_va=0xfffe3a900000 region_pa=0x00000828fa900000
+tid=1 region=6 sorted_page=6 hugepage=25 huge_va=0xfffdc0000000 huge_pa=0x0000082900000000 offset=0x22000000 offset_bytes=570425344 region_va=0xfffde2000000 region_pa=0x0000082922000000
+tid=1 region=7 sorted_page=7 hugepage=24 huge_va=0xfffd80000000 huge_pa=0x0000082940000000 offset=0x1ff00000 offset_bytes=535822336 region_va=0xfffd9ff00000 region_pa=0x000008295ff00000
+tid=1 region=8 sorted_page=8 hugepage=23 huge_va=0xfffd40000000 huge_pa=0x0000082980000000 offset=0x03600000 offset_bytes=56623104 region_va=0xfffd43600000 region_pa=0x0000082983600000
+tid=1 region=9 sorted_page=9 hugepage=22 huge_va=0xfffd00000000 huge_pa=0x00000829c0000000 offset=0x36700000 offset_bytes=913309696 region_va=0xfffd36700000 region_pa=0x00000829f6700000
+tid=2 region=10 sorted_page=10 hugepage=21 huge_va=0xfffcc0000000 huge_pa=0x0000082a00000000 offset=0x22600000 offset_bytes=576716800 region_va=0xfffce2600000 region_pa=0x0000082a22600000
+tid=2 region=11 sorted_page=11 hugepage=20 huge_va=0xfffc80000000 huge_pa=0x0000082a40000000 offset=0x2d500000 offset_bytes=760217600 region_va=0xfffcad500000 region_pa=0x0000082a6d500000
+tid=2 region=12 sorted_page=12 hugepage=19 huge_va=0xfffc40000000 huge_pa=0x0000082a80000000 offset=0x00b00000 offset_bytes=11534336 region_va=0xfffc40b00000 region_pa=0x0000082a80b00000
+tid=2 region=13 sorted_page=13 hugepage=18 huge_va=0xfffc00000000 huge_pa=0x0000082ac0000000 offset=0x1ab00000 offset_bytes=447741952 region_va=0xfffc1ab00000 region_pa=0x0000082adab00000
+tid=2 region=14 sorted_page=14 hugepage=17 huge_va=0xfffbc0000000 huge_pa=0x0000082b00000000 offset=0x0be00000 offset_bytes=199229440 region_va=0xfffbcbe00000 region_pa=0x0000082b0be00000
+tid=3 region=15 sorted_page=15 hugepage=16 huge_va=0xfffb80000000 huge_pa=0x0000082b40000000 offset=0x2e300000 offset_bytes=774897664 region_va=0xfffbae300000 region_pa=0x0000082b6e300000
+tid=3 region=16 sorted_page=16 hugepage=15 huge_va=0xfffb40000000 huge_pa=0x0000082b80000000 offset=0x31100000 offset_bytes=823132160 region_va=0xfffb71100000 region_pa=0x0000082bb1100000
+tid=3 region=17 sorted_page=17 hugepage=14 huge_va=0xfffb00000000 huge_pa=0x0000082bc0000000 offset=0x3d100000 offset_bytes=1024458752 region_va=0xfffb3d100000 region_pa=0x0000082bfd100000
+tid=3 region=18 sorted_page=18 hugepage=13 huge_va=0xfffac0000000 huge_pa=0x0000082c00000000 offset=0x38100000 offset_bytes=940572672 region_va=0xfffaf8100000 region_pa=0x0000082c38100000
+tid=3 region=19 sorted_page=19 hugepage=12 huge_va=0xfffa80000000 huge_pa=0x0000082c40000000 offset=0x3dd00000 offset_bytes=1037041664 region_va=0xfffabdd00000 region_pa=0x0000082c7dd00000
+tid=4 region=20 sorted_page=20 hugepage=11 huge_va=0xfffa40000000 huge_pa=0x0000082c80000000 offset=0x32100000 offset_bytes=839909376 region_va=0xfffa72100000 region_pa=0x0000082cb2100000
+tid=4 region=21 sorted_page=21 hugepage=10 huge_va=0xfffa00000000 huge_pa=0x0000082cc0000000 offset=0x22f00000 offset_bytes=586153984 region_va=0xfffa22f00000 region_pa=0x0000082ce2f00000
+tid=4 region=22 sorted_page=22 hugepage=9 huge_va=0xfff9c0000000 huge_pa=0x0000082d00000000 offset=0x36200000 offset_bytes=908066816 region_va=0xfff9f6200000 region_pa=0x0000082d36200000
+tid=4 region=23 sorted_page=23 hugepage=8 huge_va=0xfff980000000 huge_pa=0x0000082d40000000 offset=0x13400000 offset_bytes=322961408 region_va=0xfff993400000 region_pa=0x0000082d53400000
+tid=4 region=24 sorted_page=24 hugepage=7 huge_va=0xfff940000000 huge_pa=0x0000082d80000000 offset=0x07300000 offset_bytes=120586240 region_va=0xfff947300000 region_pa=0x0000082d87300000
+tid=5 region=25 sorted_page=25 hugepage=6 huge_va=0xfff900000000 huge_pa=0x0000082dc0000000 offset=0x14000000 offset_bytes=335544320 region_va=0xfff914000000 region_pa=0x0000082dd4000000
+tid=5 region=26 sorted_page=26 hugepage=5 huge_va=0xfff8c0000000 huge_pa=0x0000082e00000000 offset=0x20800000 offset_bytes=545259520 region_va=0xfff8e0800000 region_pa=0x0000082e20800000
+tid=5 region=27 sorted_page=27 hugepage=4 huge_va=0xfff880000000 huge_pa=0x0000082e40000000 offset=0x30900000 offset_bytes=814743552 region_va=0xfff8b0900000 region_pa=0x0000082e70900000
+tid=5 region=28 sorted_page=28 hugepage=3 huge_va=0xfff840000000 huge_pa=0x0000082e80000000 offset=0x0e300000 offset_bytes=238026752 region_va=0xfff84e300000 region_pa=0x0000082e8e300000
+tid=5 region=29 sorted_page=29 hugepage=2 huge_va=0xfff800000000 huge_pa=0x0000082ec0000000 offset=0x0c200000 offset_bytes=203423744 region_va=0xfff80c200000 region_pa=0x0000082ecc200000
+tid=6 region=30 sorted_page=30 hugepage=1 huge_va=0xfff7c0000000 huge_pa=0x0000082f00000000 offset=0x03e00000 offset_bytes=65011712 region_va=0xfff7c3e00000 region_pa=0x0000082f03e00000
+tid=6 region=31 sorted_page=31 hugepage=0 huge_va=0xfff780000000 huge_pa=0x0000082f40000000 offset=0x3e100000 offset_bytes=1041235968 region_va=0xfff7be100000 region_pa=0x0000082f7e100000
+tid=6 region=32 sorted_page=0 hugepage=31 huge_va=0xffff40000000 huge_pa=0x0000082780000000 offset=0x34a00000 offset_bytes=882900992 region_va=0xffff74a00000 region_pa=0x00000827b4a00000
+tid=6 region=33 sorted_page=1 hugepage=30 huge_va=0xffff00000000 huge_pa=0x00000827c0000000 offset=0x2cf00000 offset_bytes=753926144 region_va=0xffff2cf00000 region_pa=0x00000827ecf00000
+tid=6 region=34 sorted_page=2 hugepage=29 huge_va=0xfffec0000000 huge_pa=0x0000082800000000 offset=0x04b00000 offset_bytes=78643200 region_va=0xfffec4b00000 region_pa=0x0000082804b00000
+tid=7 region=35 sorted_page=3 hugepage=28 huge_va=0xfffe80000000 huge_pa=0x0000082840000000 offset=0x3a700000 offset_bytes=980418560 region_va=0xfffeba700000 region_pa=0x000008287a700000
+tid=7 region=36 sorted_page=4 hugepage=27 huge_va=0xfffe40000000 huge_pa=0x0000082880000000 offset=0x2d300000 offset_bytes=758120448 region_va=0xfffe6d300000 region_pa=0x00000828ad300000
+tid=7 region=37 sorted_page=5 hugepage=26 huge_va=0xfffe00000000 huge_pa=0x00000828c0000000 offset=0x19600000 offset_bytes=425721856 region_va=0xfffe19600000 region_pa=0x00000828d9600000
+tid=7 region=38 sorted_page=6 hugepage=25 huge_va=0xfffdc0000000 huge_pa=0x0000082900000000 offset=0x22f00000 offset_bytes=586153984 region_va=0xfffde2f00000 region_pa=0x0000082922f00000
+tid=7 region=39 sorted_page=7 hugepage=24 huge_va=0xfffd80000000 huge_pa=0x0000082940000000 offset=0x32c00000 offset_bytes=851443712 region_va=0xfffdb2c00000 region_pa=0x0000082972c00000
+tid=8 region=40 sorted_page=8 hugepage=23 huge_va=0xfffd40000000 huge_pa=0x0000082980000000 offset=0x0a100000 offset_bytes=168820736 region_va=0xfffd4a100000 region_pa=0x000008298a100000
+tid=8 region=41 sorted_page=9 hugepage=22 huge_va=0xfffd00000000 huge_pa=0x00000829c0000000 offset=0x0f800000 offset_bytes=260046848 region_va=0xfffd0f800000 region_pa=0x00000829cf800000
+tid=8 region=42 sorted_page=10 hugepage=21 huge_va=0xfffcc0000000 huge_pa=0x0000082a00000000 offset=0x34b00000 offset_bytes=883949568 region_va=0xfffcf4b00000 region_pa=0x0000082a34b00000
+tid=8 region=43 sorted_page=11 hugepage=20 huge_va=0xfffc80000000 huge_pa=0x0000082a40000000 offset=0x02400000 offset_bytes=37748736 region_va=0xfffc82400000 region_pa=0x0000082a42400000
+tid=8 region=44 sorted_page=12 hugepage=19 huge_va=0xfffc40000000 huge_pa=0x0000082a80000000 offset=0x1f100000 offset_bytes=521142272 region_va=0xfffc5f100000 region_pa=0x0000082a9f100000
+tid=9 region=45 sorted_page=13 hugepage=18 huge_va=0xfffc00000000 huge_pa=0x0000082ac0000000 offset=0x32900000 offset_bytes=848297984 region_va=0xfffc32900000 region_pa=0x0000082af2900000
+tid=9 region=46 sorted_page=14 hugepage=17 huge_va=0xfffbc0000000 huge_pa=0x0000082b00000000 offset=0x06700000 offset_bytes=108003328 region_va=0xfffbc6700000 region_pa=0x0000082b06700000
+tid=9 region=47 sorted_page=15 hugepage=16 huge_va=0xfffb80000000 huge_pa=0x0000082b40000000 offset=0x05a00000 offset_bytes=94371840 region_va=0xfffb85a00000 region_pa=0x0000082b45a00000
+tid=9 region=48 sorted_page=16 hugepage=15 huge_va=0xfffb40000000 huge_pa=0x0000082b80000000 offset=0x0ef00000 offset_bytes=250609664 region_va=0xfffb4ef00000 region_pa=0x0000082b8ef00000
+tid=9 region=49 sorted_page=17 hugepage=14 huge_va=0xfffb00000000 huge_pa=0x0000082bc0000000 offset=0x10500000 offset_bytes=273678336 region_va=0xfffb10500000 region_pa=0x0000082bd0500000
+tid=10 region=50 sorted_page=18 hugepage=13 huge_va=0xfffac0000000 huge_pa=0x0000082c00000000 offset=0x3f700000 offset_bytes=1064304640 region_va=0xfffaff700000 region_pa=0x0000082c3f700000
+tid=10 region=51 sorted_page=19 hugepage=12 huge_va=0xfffa80000000 huge_pa=0x0000082c40000000 offset=0x1bd00000 offset_bytes=466616320 region_va=0xfffa9bd00000 region_pa=0x0000082c5bd00000
+tid=10 region=52 sorted_page=20 hugepage=11 huge_va=0xfffa40000000 huge_pa=0x0000082c80000000 offset=0x2bf00000 offset_bytes=737148928 region_va=0xfffa6bf00000 region_pa=0x0000082cabf00000
+tid=10 region=53 sorted_page=21 hugepage=10 huge_va=0xfffa00000000 huge_pa=0x0000082cc0000000 offset=0x00300000 offset_bytes=3145728 region_va=0xfffa00300000 region_pa=0x0000082cc0300000
+tid=10 region=54 sorted_page=22 hugepage=9 huge_va=0xfff9c0000000 huge_pa=0x0000082d00000000 offset=0x1c900000 offset_bytes=479199232 region_va=0xfff9dc900000 region_pa=0x0000082d1c900000
+tid=11 region=55 sorted_page=23 hugepage=8 huge_va=0xfff980000000 huge_pa=0x0000082d40000000 offset=0x3eb00000 offset_bytes=1051721728 region_va=0xfff9beb00000 region_pa=0x0000082d7eb00000
+tid=11 region=56 sorted_page=24 hugepage=7 huge_va=0xfff940000000 huge_pa=0x0000082d80000000 offset=0x23600000 offset_bytes=593494016 region_va=0xfff963600000 region_pa=0x0000082da3600000
+tid=11 region=57 sorted_page=25 hugepage=6 huge_va=0xfff900000000 huge_pa=0x0000082dc0000000 offset=0x04000000 offset_bytes=67108864 region_va=0xfff904000000 region_pa=0x0000082dc4000000
+tid=11 region=58 sorted_page=26 hugepage=5 huge_va=0xfff8c0000000 huge_pa=0x0000082e00000000 offset=0x03800000 offset_bytes=58720256 region_va=0xfff8c3800000 region_pa=0x0000082e03800000
+tid=11 region=59 sorted_page=27 hugepage=4 huge_va=0xfff880000000 huge_pa=0x0000082e40000000 offset=0x2a300000 offset_bytes=707788800 region_va=0xfff8aa300000 region_pa=0x0000082e6a300000
+tid=12 region=60 sorted_page=28 hugepage=3 huge_va=0xfff840000000 huge_pa=0x0000082e80000000 offset=0x10d00000 offset_bytes=282066944 region_va=0xfff850d00000 region_pa=0x0000082e90d00000
+tid=12 region=61 sorted_page=29 hugepage=2 huge_va=0xfff800000000 huge_pa=0x0000082ec0000000 offset=0x06000000 offset_bytes=100663296 region_va=0xfff806000000 region_pa=0x0000082ec6000000
+tid=12 region=62 sorted_page=30 hugepage=1 huge_va=0xfff7c0000000 huge_pa=0x0000082f00000000 offset=0x24900000 offset_bytes=613416960 region_va=0xfff7e4900000 region_pa=0x0000082f24900000
+tid=12 region=63 sorted_page=31 hugepage=0 huge_va=0xfff780000000 huge_pa=0x0000082f40000000 offset=0x0f900000 offset_bytes=261095424 region_va=0xfff78f900000 region_pa=0x0000082f4f900000
+tid=12 region=64 sorted_page=0 hugepage=31 huge_va=0xffff40000000 huge_pa=0x0000082780000000 offset=0x12d00000 offset_bytes=315621376 region_va=0xffff52d00000 region_pa=0x0000082792d00000
+tid=13 region=65 sorted_page=1 hugepage=30 huge_va=0xffff00000000 huge_pa=0x00000827c0000000 offset=0x20100000 offset_bytes=537919488 region_va=0xffff20100000 region_pa=0x00000827e0100000
+tid=13 region=66 sorted_page=2 hugepage=29 huge_va=0xfffec0000000 huge_pa=0x0000082800000000 offset=0x32b00000 offset_bytes=850395136 region_va=0xfffef2b00000 region_pa=0x0000082832b00000
+tid=13 region=67 sorted_page=3 hugepage=28 huge_va=0xfffe80000000 huge_pa=0x0000082840000000 offset=0x24a00000 offset_bytes=614465536 region_va=0xfffea4a00000 region_pa=0x0000082864a00000
+tid=13 region=68 sorted_page=4 hugepage=27 huge_va=0xfffe40000000 huge_pa=0x0000082880000000 offset=0x36200000 offset_bytes=908066816 region_va=0xfffe76200000 region_pa=0x00000828b6200000
+tid=13 region=69 sorted_page=5 hugepage=26 huge_va=0xfffe00000000 huge_pa=0x00000828c0000000 offset=0x35100000 offset_bytes=890241024 region_va=0xfffe35100000 region_pa=0x00000828f5100000
+=== End of mapping ===
+STAGE_BEGIN round=33 mode=random seed=32 stage=warmup seconds=10 unix_time=1792374513
+STAGE_END round=33 mode=random seed=32 stage=warmup status=OK elapsed=10.003380 blocks=830906 covered_GiB=811.431641 covered_GiB_s=81.115751 load_GiB=12.678619
+STAGE_BEGIN round=33 mode=random seed=32 stage=measure seconds=10 unix_time=1792374523
+STAGE_END round=33 mode=random seed=32 stage=measure status=OK elapsed=10.003496 blocks=831387 covered_GiB=811.901367 covered_GiB_s=81.161759 load_GiB=12.685959
+TRIAL_END round=33 mode=random seed=32
+# User-provided seed34 metrics: DDR_TOTAL=11.44 L3_HIT_ALL=70.861
+TRIAL_BEGIN round=35 mode=random seed=34
+mode=random seed=34 quarter_counts=[20,19,19,12]
+=== Selected region mapping (offsets are bytes) ===
+tid=0 region=0 sorted_page=0 hugepage=31 huge_va=0xffff40000000 huge_pa=0x0000082780000000 offset=0x00d00000 offset_bytes=13631488 region_va=0xffff40d00000 region_pa=0x0000082780d00000
+tid=0 region=1 sorted_page=1 hugepage=30 huge_va=0xffff00000000 huge_pa=0x00000827c0000000 offset=0x28100000 offset_bytes=672137216 region_va=0xffff28100000 region_pa=0x00000827e8100000
+tid=0 region=2 sorted_page=2 hugepage=29 huge_va=0xfffec0000000 huge_pa=0x0000082800000000 offset=0x3e900000 offset_bytes=1049624576 region_va=0xfffefe900000 region_pa=0x000008283e900000
+tid=0 region=3 sorted_page=3 hugepage=28 huge_va=0xfffe80000000 huge_pa=0x0000082840000000 offset=0x3df00000 offset_bytes=1039138816 region_va=0xfffebdf00000 region_pa=0x000008287df00000
+tid=0 region=4 sorted_page=4 hugepage=27 huge_va=0xfffe40000000 huge_pa=0x0000082880000000 offset=0x35c00000 offset_bytes=901775360 region_va=0xfffe75c00000 region_pa=0x00000828b5c00000
+tid=1 region=5 sorted_page=5 hugepage=26 huge_va=0xfffe00000000 huge_pa=0x00000828c0000000 offset=0x11500000 offset_bytes=290455552 region_va=0xfffe11500000 region_pa=0x00000828d1500000
+tid=1 region=6 sorted_page=6 hugepage=25 huge_va=0xfffdc0000000 huge_pa=0x0000082900000000 offset=0x2f300000 offset_bytes=791674880 region_va=0xfffdef300000 region_pa=0x000008292f300000
+tid=1 region=7 sorted_page=7 hugepage=24 huge_va=0xfffd80000000 huge_pa=0x0000082940000000 offset=0x06e00000 offset_bytes=115343360 region_va=0xfffd86e00000 region_pa=0x0000082946e00000
+tid=1 region=8 sorted_page=8 hugepage=23 huge_va=0xfffd40000000 huge_pa=0x0000082980000000 offset=0x0a400000 offset_bytes=171966464 region_va=0xfffd4a400000 region_pa=0x000008298a400000
+tid=1 region=9 sorted_page=9 hugepage=22 huge_va=0xfffd00000000 huge_pa=0x00000829c0000000 offset=0x20600000 offset_bytes=543162368 region_va=0xfffd20600000 region_pa=0x00000829e0600000
+tid=2 region=10 sorted_page=10 hugepage=21 huge_va=0xfffcc0000000 huge_pa=0x0000082a00000000 offset=0x0b600000 offset_bytes=190840832 region_va=0xfffccb600000 region_pa=0x0000082a0b600000
+tid=2 region=11 sorted_page=11 hugepage=20 huge_va=0xfffc80000000 huge_pa=0x0000082a40000000 offset=0x23b00000 offset_bytes=598736896 region_va=0xfffca3b00000 region_pa=0x0000082a63b00000
+tid=2 region=12 sorted_page=12 hugepage=19 huge_va=0xfffc40000000 huge_pa=0x0000082a80000000 offset=0x16500000 offset_bytes=374341632 region_va=0xfffc56500000 region_pa=0x0000082a96500000
+tid=2 region=13 sorted_page=13 hugepage=18 huge_va=0xfffc00000000 huge_pa=0x0000082ac0000000 offset=0x19400000 offset_bytes=423624704 region_va=0xfffc19400000 region_pa=0x0000082ad9400000
+tid=2 region=14 sorted_page=14 hugepage=17 huge_va=0xfffbc0000000 huge_pa=0x0000082b00000000 offset=0x13400000 offset_bytes=322961408 region_va=0xfffbd3400000 region_pa=0x0000082b13400000
+tid=3 region=15 sorted_page=15 hugepage=16 huge_va=0xfffb80000000 huge_pa=0x0000082b40000000 offset=0x19f00000 offset_bytes=435159040 region_va=0xfffb99f00000 region_pa=0x0000082b59f00000
+tid=3 region=16 sorted_page=16 hugepage=15 huge_va=0xfffb40000000 huge_pa=0x0000082b80000000 offset=0x14300000 offset_bytes=338690048 region_va=0xfffb54300000 region_pa=0x0000082b94300000
+tid=3 region=17 sorted_page=17 hugepage=14 huge_va=0xfffb00000000 huge_pa=0x0000082bc0000000 offset=0x15f00000 offset_bytes=368050176 region_va=0xfffb15f00000 region_pa=0x0000082bd5f00000
+tid=3 region=18 sorted_page=18 hugepage=13 huge_va=0xfffac0000000 huge_pa=0x0000082c00000000 offset=0x26d00000 offset_bytes=651165696 region_va=0xfffae6d00000 region_pa=0x0000082c26d00000
+tid=3 region=19 sorted_page=19 hugepage=12 huge_va=0xfffa80000000 huge_pa=0x0000082c40000000 offset=0x06800000 offset_bytes=109051904 region_va=0xfffa86800000 region_pa=0x0000082c46800000
+tid=4 region=20 sorted_page=20 hugepage=11 huge_va=0xfffa40000000 huge_pa=0x0000082c80000000 offset=0x1eb00000 offset_bytes=514850816 region_va=0xfffa5eb00000 region_pa=0x0000082c9eb00000
+tid=4 region=21 sorted_page=21 hugepage=10 huge_va=0xfffa00000000 huge_pa=0x0000082cc0000000 offset=0x36000000 offset_bytes=905969664 region_va=0xfffa36000000 region_pa=0x0000082cf6000000
+tid=4 region=22 sorted_page=22 hugepage=9 huge_va=0xfff9c0000000 huge_pa=0x0000082d00000000 offset=0x31300000 offset_bytes=825229312 region_va=0xfff9f1300000 region_pa=0x0000082d31300000
+tid=4 region=23 sorted_page=23 hugepage=8 huge_va=0xfff980000000 huge_pa=0x0000082d40000000 offset=0x05d00000 offset_bytes=97517568 region_va=0xfff985d00000 region_pa=0x0000082d45d00000
+tid=4 region=24 sorted_page=24 hugepage=7 huge_va=0xfff940000000 huge_pa=0x0000082d80000000 offset=0x11200000 offset_bytes=287309824 region_va=0xfff951200000 region_pa=0x0000082d91200000
+tid=5 region=25 sorted_page=25 hugepage=6 huge_va=0xfff900000000 huge_pa=0x0000082dc0000000 offset=0x34100000 offset_bytes=873463808 region_va=0xfff934100000 region_pa=0x0000082df4100000
+tid=5 region=26 sorted_page=26 hugepage=5 huge_va=0xfff8c0000000 huge_pa=0x0000082e00000000 offset=0x0d200000 offset_bytes=220200960 region_va=0xfff8cd200000 region_pa=0x0000082e0d200000
+tid=5 region=27 sorted_page=27 hugepage=4 huge_va=0xfff880000000 huge_pa=0x0000082e40000000 offset=0x2fd00000 offset_bytes=802160640 region_va=0xfff8afd00000 region_pa=0x0000082e6fd00000
+tid=5 region=28 sorted_page=28 hugepage=3 huge_va=0xfff840000000 huge_pa=0x0000082e80000000 offset=0x01200000 offset_bytes=18874368 region_va=0xfff841200000 region_pa=0x0000082e81200000
+tid=5 region=29 sorted_page=29 hugepage=2 huge_va=0xfff800000000 huge_pa=0x0000082ec0000000 offset=0x0f200000 offset_bytes=253755392 region_va=0xfff80f200000 region_pa=0x0000082ecf200000
+tid=6 region=30 sorted_page=30 hugepage=1 huge_va=0xfff7c0000000 huge_pa=0x0000082f00000000 offset=0x2eb00000 offset_bytes=783286272 region_va=0xfff7eeb00000 region_pa=0x0000082f2eb00000
+tid=6 region=31 sorted_page=31 hugepage=0 huge_va=0xfff780000000 huge_pa=0x0000082f40000000 offset=0x09900000 offset_bytes=160432128 region_va=0xfff789900000 region_pa=0x0000082f49900000
+tid=6 region=32 sorted_page=0 hugepage=31 huge_va=0xffff40000000 huge_pa=0x0000082780000000 offset=0x24100000 offset_bytes=605028352 region_va=0xffff64100000 region_pa=0x00000827a4100000
+tid=6 region=33 sorted_page=1 hugepage=30 huge_va=0xffff00000000 huge_pa=0x00000827c0000000 offset=0x2af00000 offset_bytes=720371712 region_va=0xffff2af00000 region_pa=0x00000827eaf00000
+tid=6 region=34 sorted_page=2 hugepage=29 huge_va=0xfffec0000000 huge_pa=0x0000082800000000 offset=0x09900000 offset_bytes=160432128 region_va=0xfffec9900000 region_pa=0x0000082809900000
+tid=7 region=35 sorted_page=3 hugepage=28 huge_va=0xfffe80000000 huge_pa=0x0000082840000000 offset=0x17400000 offset_bytes=390070272 region_va=0xfffe97400000 region_pa=0x0000082857400000
+tid=7 region=36 sorted_page=4 hugepage=27 huge_va=0xfffe40000000 huge_pa=0x0000082880000000 offset=0x2ab00000 offset_bytes=716177408 region_va=0xfffe6ab00000 region_pa=0x00000828aab00000
+tid=7 region=37 sorted_page=5 hugepage=26 huge_va=0xfffe00000000 huge_pa=0x00000828c0000000 offset=0x15b00000 offset_bytes=363855872 region_va=0xfffe15b00000 region_pa=0x00000828d5b00000
+tid=7 region=38 sorted_page=6 hugepage=25 huge_va=0xfffdc0000000 huge_pa=0x0000082900000000 offset=0x2e700000 offset_bytes=779091968 region_va=0xfffdee700000 region_pa=0x000008292e700000
+tid=7 region=39 sorted_page=7 hugepage=24 huge_va=0xfffd80000000 huge_pa=0x0000082940000000 offset=0x15100000 offset_bytes=353370112 region_va=0xfffd95100000 region_pa=0x0000082955100000
+tid=8 region=40 sorted_page=8 hugepage=23 huge_va=0xfffd40000000 huge_pa=0x0000082980000000 offset=0x08300000 offset_bytes=137363456 region_va=0xfffd48300000 region_pa=0x0000082988300000
+tid=8 region=41 sorted_page=9 hugepage=22 huge_va=0xfffd00000000 huge_pa=0x00000829c0000000 offset=0x25500000 offset_bytes=625999872 region_va=0xfffd25500000 region_pa=0x00000829e5500000
+tid=8 region=42 sorted_page=10 hugepage=21 huge_va=0xfffcc0000000 huge_pa=0x0000082a00000000 offset=0x09f00000 offset_bytes=166723584 region_va=0xfffcc9f00000 region_pa=0x0000082a09f00000
+tid=8 region=43 sorted_page=11 hugepage=20 huge_va=0xfffc80000000 huge_pa=0x0000082a40000000 offset=0x2fb00000 offset_bytes=800063488 region_va=0xfffcafb00000 region_pa=0x0000082a6fb00000
+tid=8 region=44 sorted_page=12 hugepage=19 huge_va=0xfffc40000000 huge_pa=0x0000082a80000000 offset=0x20800000 offset_bytes=545259520 region_va=0xfffc60800000 region_pa=0x0000082aa0800000
+tid=9 region=45 sorted_page=13 hugepage=18 huge_va=0xfffc00000000 huge_pa=0x0000082ac0000000 offset=0x07f00000 offset_bytes=133169152 region_va=0xfffc07f00000 region_pa=0x0000082ac7f00000
+tid=9 region=46 sorted_page=14 hugepage=17 huge_va=0xfffbc0000000 huge_pa=0x0000082b00000000 offset=0x35c00000 offset_bytes=901775360 region_va=0xfffbf5c00000 region_pa=0x0000082b35c00000
+tid=9 region=47 sorted_page=15 hugepage=16 huge_va=0xfffb80000000 huge_pa=0x0000082b40000000 offset=0x38900000 offset_bytes=948961280 region_va=0xfffbb8900000 region_pa=0x0000082b78900000
+tid=9 region=48 sorted_page=16 hugepage=15 huge_va=0xfffb40000000 huge_pa=0x0000082b80000000 offset=0x33800000 offset_bytes=864026624 region_va=0xfffb73800000 region_pa=0x0000082bb3800000
+tid=9 region=49 sorted_page=17 hugepage=14 huge_va=0xfffb00000000 huge_pa=0x0000082bc0000000 offset=0x12200000 offset_bytes=304087040 region_va=0xfffb12200000 region_pa=0x0000082bd2200000
+tid=10 region=50 sorted_page=18 hugepage=13 huge_va=0xfffac0000000 huge_pa=0x0000082c00000000 offset=0x37a00000 offset_bytes=933232640 region_va=0xfffaf7a00000 region_pa=0x0000082c37a00000
+tid=10 region=51 sorted_page=19 hugepage=12 huge_va=0xfffa80000000 huge_pa=0x0000082c40000000 offset=0x1c500000 offset_bytes=475004928 region_va=0xfffa9c500000 region_pa=0x0000082c5c500000
+tid=10 region=52 sorted_page=20 hugepage=11 huge_va=0xfffa40000000 huge_pa=0x0000082c80000000 offset=0x33300000 offset_bytes=858783744 region_va=0xfffa73300000 region_pa=0x0000082cb3300000
+tid=10 region=53 sorted_page=21 hugepage=10 huge_va=0xfffa00000000 huge_pa=0x0000082cc0000000 offset=0x2f900000 offset_bytes=797966336 region_va=0xfffa2f900000 region_pa=0x0000082cef900000
+tid=10 region=54 sorted_page=22 hugepage=9 huge_va=0xfff9c0000000 huge_pa=0x0000082d00000000 offset=0x22000000 offset_bytes=570425344 region_va=0xfff9e2000000 region_pa=0x0000082d22000000
+tid=11 region=55 sorted_page=23 hugepage=8 huge_va=0xfff980000000 huge_pa=0x0000082d40000000 offset=0x30700000 offset_bytes=812646400 region_va=0xfff9b0700000 region_pa=0x0000082d70700000
+tid=11 region=56 sorted_page=24 hugepage=7 huge_va=0xfff940000000 huge_pa=0x0000082d80000000 offset=0x04d00000 offset_bytes=80740352 region_va=0xfff944d00000 region_pa=0x0000082d84d00000
+tid=11 region=57 sorted_page=25 hugepage=6 huge_va=0xfff900000000 huge_pa=0x0000082dc0000000 offset=0x10800000 offset_bytes=276824064 region_va=0xfff910800000 region_pa=0x0000082dd0800000
+tid=11 region=58 sorted_page=26 hugepage=5 huge_va=0xfff8c0000000 huge_pa=0x0000082e00000000 offset=0x2d300000 offset_bytes=758120448 region_va=0xfff8ed300000 region_pa=0x0000082e2d300000
+tid=11 region=59 sorted_page=27 hugepage=4 huge_va=0xfff880000000 huge_pa=0x0000082e40000000 offset=0x10b00000 offset_bytes=279969792 region_va=0xfff890b00000 region_pa=0x0000082e50b00000
+tid=12 region=60 sorted_page=28 hugepage=3 huge_va=0xfff840000000 huge_pa=0x0000082e80000000 offset=0x1e800000 offset_bytes=511705088 region_va=0xfff85e800000 region_pa=0x0000082e9e800000
+tid=12 region=61 sorted_page=29 hugepage=2 huge_va=0xfff800000000 huge_pa=0x0000082ec0000000 offset=0x1f400000 offset_bytes=524288000 region_va=0xfff81f400000 region_pa=0x0000082edf400000
+tid=12 region=62 sorted_page=30 hugepage=1 huge_va=0xfff7c0000000 huge_pa=0x0000082f00000000 offset=0x2f100000 offset_bytes=789577728 region_va=0xfff7ef100000 region_pa=0x0000082f2f100000
+tid=12 region=63 sorted_page=31 hugepage=0 huge_va=0xfff780000000 huge_pa=0x0000082f40000000 offset=0x00c00000 offset_bytes=12582912 region_va=0xfff780c00000 region_pa=0x0000082f40c00000
+tid=12 region=64 sorted_page=0 hugepage=31 huge_va=0xffff40000000 huge_pa=0x0000082780000000 offset=0x06200000 offset_bytes=102760448 region_va=0xffff46200000 region_pa=0x0000082786200000
+tid=13 region=65 sorted_page=1 hugepage=30 huge_va=0xffff00000000 huge_pa=0x00000827c0000000 offset=0x08b00000 offset_bytes=145752064 region_va=0xffff08b00000 region_pa=0x00000827c8b00000
+tid=13 region=66 sorted_page=2 hugepage=29 huge_va=0xfffec0000000 huge_pa=0x0000082800000000 offset=0x0fb00000 offset_bytes=263192576 region_va=0xfffecfb00000 region_pa=0x000008280fb00000
+tid=13 region=67 sorted_page=3 hugepage=28 huge_va=0xfffe80000000 huge_pa=0x0000082840000000 offset=0x24300000 offset_bytes=607125504 region_va=0xfffea4300000 region_pa=0x0000082864300000
+tid=13 region=68 sorted_page=4 hugepage=27 huge_va=0xfffe40000000 huge_pa=0x0000082880000000 offset=0x1da00000 offset_bytes=497025024 region_va=0xfffe5da00000 region_pa=0x000008289da00000
+tid=13 region=69 sorted_page=5 hugepage=26 huge_va=0xfffe00000000 huge_pa=0x00000828c0000000 offset=0x0bf00000 offset_bytes=200278016 region_va=0xfffe0bf00000 region_pa=0x00000828cbf00000
+=== End of mapping ===
+STAGE_BEGIN round=35 mode=random seed=34 stage=warmup seconds=10 unix_time=1792374553
+STAGE_END round=35 mode=random seed=34 stage=warmup status=OK elapsed=10.003441 blocks=828091 covered_GiB=808.682617 covered_GiB_s=80.840444 load_GiB=12.635666
+STAGE_BEGIN round=35 mode=random seed=34 stage=measure seconds=10 unix_time=1792374563
+STAGE_END round=35 mode=random seed=34 stage=measure status=OK elapsed=10.003443 blocks=828256 covered_GiB=808.843750 covered_GiB_s=80.856539 load_GiB=12.638184
+TRIAL_END round=35 mode=random seed=34
+TRIAL_BEGIN round=36 mode=random seed=35
+mode=random seed=35 quarter_counts=[18,13,26,13]
+=== Selected region mapping (offsets are bytes) ===
+tid=0 region=0 sorted_page=0 hugepage=31 huge_va=0xffff40000000 huge_pa=0x0000082780000000 offset=0x05b00000 offset_bytes=95420416 region_va=0xffff45b00000 region_pa=0x0000082785b00000
+tid=0 region=1 sorted_page=1 hugepage=30 huge_va=0xffff00000000 huge_pa=0x00000827c0000000 offset=0x23200000 offset_bytes=589299712 region_va=0xffff23200000 region_pa=0x00000827e3200000
+tid=0 region=2 sorted_page=2 hugepage=29 huge_va=0xfffec0000000 huge_pa=0x0000082800000000 offset=0x32f00000 offset_bytes=854589440 region_va=0xfffef2f00000 region_pa=0x0000082832f00000
+tid=0 region=3 sorted_page=3 hugepage=28 huge_va=0xfffe80000000 huge_pa=0x0000082840000000 offset=0x11500000 offset_bytes=290455552 region_va=0xfffe91500000 region_pa=0x0000082851500000
+tid=0 region=4 sorted_page=4 hugepage=27 huge_va=0xfffe40000000 huge_pa=0x0000082880000000 offset=0x34400000 offset_bytes=876609536 region_va=0xfffe74400000 region_pa=0x00000828b4400000
+tid=1 region=5 sorted_page=5 hugepage=26 huge_va=0xfffe00000000 huge_pa=0x00000828c0000000 offset=0x36700000 offset_bytes=913309696 region_va=0xfffe36700000 region_pa=0x00000828f6700000
+tid=1 region=6 sorted_page=6 hugepage=25 huge_va=0xfffdc0000000 huge_pa=0x0000082900000000 offset=0x15300000 offset_bytes=355467264 region_va=0xfffdd5300000 region_pa=0x0000082915300000
+tid=1 region=7 sorted_page=7 hugepage=24 huge_va=0xfffd80000000 huge_pa=0x0000082940000000 offset=0x3b500000 offset_bytes=995098624 region_va=0xfffdbb500000 region_pa=0x000008297b500000
+tid=1 region=8 sorted_page=8 hugepage=23 huge_va=0xfffd40000000 huge_pa=0x0000082980000000 offset=0x03a00000 offset_bytes=60817408 region_va=0xfffd43a00000 region_pa=0x0000082983a00000
+tid=1 region=9 sorted_page=9 hugepage=22 huge_va=0xfffd00000000 huge_pa=0x00000829c0000000 offset=0x21300000 offset_bytes=556793856 region_va=0xfffd21300000 region_pa=0x00000829e1300000
+tid=2 region=10 sorted_page=10 hugepage=21 huge_va=0xfffcc0000000 huge_pa=0x0000082a00000000 offset=0x38500000 offset_bytes=944766976 region_va=0xfffcf8500000 region_pa=0x0000082a38500000
+tid=2 region=11 sorted_page=11 hugepage=20 huge_va=0xfffc80000000 huge_pa=0x0000082a40000000 offset=0x2eb00000 offset_bytes=783286272 region_va=0xfffcaeb00000 region_pa=0x0000082a6eb00000
+tid=2 region=12 sorted_page=12 hugepage=19 huge_va=0xfffc40000000 huge_pa=0x0000082a80000000 offset=0x09600000 offset_bytes=157286400 region_va=0xfffc49600000 region_pa=0x0000082a89600000
+tid=2 region=13 sorted_page=13 hugepage=18 huge_va=0xfffc00000000 huge_pa=0x0000082ac0000000 offset=0x28c00000 offset_bytes=683671552 region_va=0xfffc28c00000 region_pa=0x0000082ae8c00000
+tid=2 region=14 sorted_page=14 hugepage=17 huge_va=0xfffbc0000000 huge_pa=0x0000082b00000000 offset=0x2b500000 offset_bytes=726663168 region_va=0xfffbeb500000 region_pa=0x0000082b2b500000
+tid=3 region=15 sorted_page=15 hugepage=16 huge_va=0xfffb80000000 huge_pa=0x0000082b40000000 offset=0x1b200000 offset_bytes=455081984 region_va=0xfffb9b200000 region_pa=0x0000082b5b200000
+tid=3 region=16 sorted_page=16 hugepage=15 huge_va=0xfffb40000000 huge_pa=0x0000082b80000000 offset=0x2d300000 offset_bytes=758120448 region_va=0xfffb6d300000 region_pa=0x0000082bad300000
+tid=3 region=17 sorted_page=17 hugepage=14 huge_va=0xfffb00000000 huge_pa=0x0000082bc0000000 offset=0x24100000 offset_bytes=605028352 region_va=0xfffb24100000 region_pa=0x0000082be4100000
+tid=3 region=18 sorted_page=18 hugepage=13 huge_va=0xfffac0000000 huge_pa=0x0000082c00000000 offset=0x11c00000 offset_bytes=297795584 region_va=0xfffad1c00000 region_pa=0x0000082c11c00000
+tid=3 region=19 sorted_page=19 hugepage=12 huge_va=0xfffa80000000 huge_pa=0x0000082c40000000 offset=0x24000000 offset_bytes=603979776 region_va=0xfffaa4000000 region_pa=0x0000082c64000000
+tid=4 region=20 sorted_page=20 hugepage=11 huge_va=0xfffa40000000 huge_pa=0x0000082c80000000 offset=0x1eb00000 offset_bytes=514850816 region_va=0xfffa5eb00000 region_pa=0x0000082c9eb00000
+tid=4 region=21 sorted_page=21 hugepage=10 huge_va=0xfffa00000000 huge_pa=0x0000082cc0000000 offset=0x2ad00000 offset_bytes=718274560 region_va=0xfffa2ad00000 region_pa=0x0000082cead00000
+tid=4 region=22 sorted_page=22 hugepage=9 huge_va=0xfff9c0000000 huge_pa=0x0000082d00000000 offset=0x14f00000 offset_bytes=351272960 region_va=0xfff9d4f00000 region_pa=0x0000082d14f00000
+tid=4 region=23 sorted_page=23 hugepage=8 huge_va=0xfff980000000 huge_pa=0x0000082d40000000 offset=0x09500000 offset_bytes=156237824 region_va=0xfff989500000 region_pa=0x0000082d49500000
+tid=4 region=24 sorted_page=24 hugepage=7 huge_va=0xfff940000000 huge_pa=0x0000082d80000000 offset=0x2b400000 offset_bytes=725614592 region_va=0xfff96b400000 region_pa=0x0000082dab400000
+tid=5 region=25 sorted_page=25 hugepage=6 huge_va=0xfff900000000 huge_pa=0x0000082dc0000000 offset=0x04a00000 offset_bytes=77594624 region_va=0xfff904a00000 region_pa=0x0000082dc4a00000
+tid=5 region=26 sorted_page=26 hugepage=5 huge_va=0xfff8c0000000 huge_pa=0x0000082e00000000 offset=0x13f00000 offset_bytes=334495744 region_va=0xfff8d3f00000 region_pa=0x0000082e13f00000
+tid=5 region=27 sorted_page=27 hugepage=4 huge_va=0xfff880000000 huge_pa=0x0000082e40000000 offset=0x26400000 offset_bytes=641728512 region_va=0xfff8a6400000 region_pa=0x0000082e66400000
+tid=5 region=28 sorted_page=28 hugepage=3 huge_va=0xfff840000000 huge_pa=0x0000082e80000000 offset=0x36e00000 offset_bytes=920649728 region_va=0xfff876e00000 region_pa=0x0000082eb6e00000
+tid=5 region=29 sorted_page=29 hugepage=2 huge_va=0xfff800000000 huge_pa=0x0000082ec0000000 offset=0x2a200000 offset_bytes=706740224 region_va=0xfff82a200000 region_pa=0x0000082eea200000
+tid=6 region=30 sorted_page=30 hugepage=1 huge_va=0xfff7c0000000 huge_pa=0x0000082f00000000 offset=0x0d400000 offset_bytes=222298112 region_va=0xfff7cd400000 region_pa=0x0000082f0d400000
+tid=6 region=31 sorted_page=31 hugepage=0 huge_va=0xfff780000000 huge_pa=0x0000082f40000000 offset=0x34f00000 offset_bytes=888143872 region_va=0xfff7b4f00000 region_pa=0x0000082f74f00000
+tid=6 region=32 sorted_page=0 hugepage=31 huge_va=0xffff40000000 huge_pa=0x0000082780000000 offset=0x36c00000 offset_bytes=918552576 region_va=0xffff76c00000 region_pa=0x00000827b6c00000
+tid=6 region=33 sorted_page=1 hugepage=30 huge_va=0xffff00000000 huge_pa=0x00000827c0000000 offset=0x25500000 offset_bytes=625999872 region_va=0xffff25500000 region_pa=0x00000827e5500000
+tid=6 region=34 sorted_page=2 hugepage=29 huge_va=0xfffec0000000 huge_pa=0x0000082800000000 offset=0x27400000 offset_bytes=658505728 region_va=0xfffee7400000 region_pa=0x0000082827400000
+tid=7 region=35 sorted_page=3 hugepage=28 huge_va=0xfffe80000000 huge_pa=0x0000082840000000 offset=0x02100000 offset_bytes=34603008 region_va=0xfffe82100000 region_pa=0x0000082842100000
+tid=7 region=36 sorted_page=4 hugepage=27 huge_va=0xfffe40000000 huge_pa=0x0000082880000000 offset=0x07000000 offset_bytes=117440512 region_va=0xfffe47000000 region_pa=0x0000082887000000
+tid=7 region=37 sorted_page=5 hugepage=26 huge_va=0xfffe00000000 huge_pa=0x00000828c0000000 offset=0x2e300000 offset_bytes=774897664 region_va=0xfffe2e300000 region_pa=0x00000828ee300000
+tid=7 region=38 sorted_page=6 hugepage=25 huge_va=0xfffdc0000000 huge_pa=0x0000082900000000 offset=0x00500000 offset_bytes=5242880 region_va=0xfffdc0500000 region_pa=0x0000082900500000
+tid=7 region=39 sorted_page=7 hugepage=24 huge_va=0xfffd80000000 huge_pa=0x0000082940000000 offset=0x29200000 offset_bytes=689963008 region_va=0xfffda9200000 region_pa=0x0000082969200000
+tid=8 region=40 sorted_page=8 hugepage=23 huge_va=0xfffd40000000 huge_pa=0x0000082980000000 offset=0x37100000 offset_bytes=923795456 region_va=0xfffd77100000 region_pa=0x00000829b7100000
+tid=8 region=41 sorted_page=9 hugepage=22 huge_va=0xfffd00000000 huge_pa=0x00000829c0000000 offset=0x08a00000 offset_bytes=144703488 region_va=0xfffd08a00000 region_pa=0x00000829c8a00000
+tid=8 region=42 sorted_page=10 hugepage=21 huge_va=0xfffcc0000000 huge_pa=0x0000082a00000000 offset=0x08200000 offset_bytes=136314880 region_va=0xfffcc8200000 region_pa=0x0000082a08200000
+tid=8 region=43 sorted_page=11 hugepage=20 huge_va=0xfffc80000000 huge_pa=0x0000082a40000000 offset=0x1e400000 offset_bytes=507510784 region_va=0xfffc9e400000 region_pa=0x0000082a5e400000
+tid=8 region=44 sorted_page=12 hugepage=19 huge_va=0xfffc40000000 huge_pa=0x0000082a80000000 offset=0x2e500000 offset_bytes=776994816 region_va=0xfffc6e500000 region_pa=0x0000082aae500000
+tid=9 region=45 sorted_page=13 hugepage=18 huge_va=0xfffc00000000 huge_pa=0x0000082ac0000000 offset=0x0e200000 offset_bytes=236978176 region_va=0xfffc0e200000 region_pa=0x0000082ace200000
+tid=9 region=46 sorted_page=14 hugepage=17 huge_va=0xfffbc0000000 huge_pa=0x0000082b00000000 offset=0x27600000 offset_bytes=660602880 region_va=0xfffbe7600000 region_pa=0x0000082b27600000
+tid=9 region=47 sorted_page=15 hugepage=16 huge_va=0xfffb80000000 huge_pa=0x0000082b40000000 offset=0x16800000 offset_bytes=377487360 region_va=0xfffb96800000 region_pa=0x0000082b56800000
+tid=9 region=48 sorted_page=16 hugepage=15 huge_va=0xfffb40000000 huge_pa=0x0000082b80000000 offset=0x25d00000 offset_bytes=634388480 region_va=0xfffb65d00000 region_pa=0x0000082ba5d00000
+tid=9 region=49 sorted_page=17 hugepage=14 huge_va=0xfffb00000000 huge_pa=0x0000082bc0000000 offset=0x31300000 offset_bytes=825229312 region_va=0xfffb31300000 region_pa=0x0000082bf1300000
+tid=10 region=50 sorted_page=18 hugepage=13 huge_va=0xfffac0000000 huge_pa=0x0000082c00000000 offset=0x02e00000 offset_bytes=48234496 region_va=0xfffac2e00000 region_pa=0x0000082c02e00000
+tid=10 region=51 sorted_page=19 hugepage=12 huge_va=0xfffa80000000 huge_pa=0x0000082c40000000 offset=0x0a700000 offset_bytes=175112192 region_va=0xfffa8a700000 region_pa=0x0000082c4a700000
+tid=10 region=52 sorted_page=20 hugepage=11 huge_va=0xfffa40000000 huge_pa=0x0000082c80000000 offset=0x23000000 offset_bytes=587202560 region_va=0xfffa63000000 region_pa=0x0000082ca3000000
+tid=10 region=53 sorted_page=21 hugepage=10 huge_va=0xfffa00000000 huge_pa=0x0000082cc0000000 offset=0x2ba00000 offset_bytes=731906048 region_va=0xfffa2ba00000 region_pa=0x0000082ceba00000
+tid=10 region=54 sorted_page=22 hugepage=9 huge_va=0xfff9c0000000 huge_pa=0x0000082d00000000 offset=0x17600000 offset_bytes=392167424 region_va=0xfff9d7600000 region_pa=0x0000082d17600000
+tid=11 region=55 sorted_page=23 hugepage=8 huge_va=0xfff980000000 huge_pa=0x0000082d40000000 offset=0x12e00000 offset_bytes=316669952 region_va=0xfff992e00000 region_pa=0x0000082d52e00000
+tid=11 region=56 sorted_page=24 hugepage=7 huge_va=0xfff940000000 huge_pa=0x0000082d80000000 offset=0x2f500000 offset_bytes=793772032 region_va=0xfff96f500000 region_pa=0x0000082daf500000
+tid=11 region=57 sorted_page=25 hugepage=6 huge_va=0xfff900000000 huge_pa=0x0000082dc0000000 offset=0x29d00000 offset_bytes=701497344 region_va=0xfff929d00000 region_pa=0x0000082de9d00000
+tid=11 region=58 sorted_page=26 hugepage=5 huge_va=0xfff8c0000000 huge_pa=0x0000082e00000000 offset=0x19f00000 offset_bytes=435159040 region_va=0xfff8d9f00000 region_pa=0x0000082e19f00000
+tid=11 region=59 sorted_page=27 hugepage=4 huge_va=0xfff880000000 huge_pa=0x0000082e40000000 offset=0x22900000 offset_bytes=579862528 region_va=0xfff8a2900000 region_pa=0x0000082e62900000
+tid=12 region=60 sorted_page=28 hugepage=3 huge_va=0xfff840000000 huge_pa=0x0000082e80000000 offset=0x3f500000 offset_bytes=1062207488 region_va=0xfff87f500000 region_pa=0x0000082ebf500000
+tid=12 region=61 sorted_page=29 hugepage=2 huge_va=0xfff800000000 huge_pa=0x0000082ec0000000 offset=0x2a300000 offset_bytes=707788800 region_va=0xfff82a300000 region_pa=0x0000082eea300000
+tid=12 region=62 sorted_page=30 hugepage=1 huge_va=0xfff7c0000000 huge_pa=0x0000082f00000000 offset=0x02700000 offset_bytes=40894464 region_va=0xfff7c2700000 region_pa=0x0000082f02700000
+tid=12 region=63 sorted_page=31 hugepage=0 huge_va=0xfff780000000 huge_pa=0x0000082f40000000 offset=0x2bd00000 offset_bytes=735051776 region_va=0xfff7abd00000 region_pa=0x0000082f6bd00000
+tid=12 region=64 sorted_page=0 hugepage=31 huge_va=0xffff40000000 huge_pa=0x0000082780000000 offset=0x07700000 offset_bytes=124780544 region_va=0xffff47700000 region_pa=0x0000082787700000
+tid=13 region=65 sorted_page=1 hugepage=30 huge_va=0xffff00000000 huge_pa=0x00000827c0000000 offset=0x1ab00000 offset_bytes=447741952 region_va=0xffff1ab00000 region_pa=0x00000827dab00000
+tid=13 region=66 sorted_page=2 hugepage=29 huge_va=0xfffec0000000 huge_pa=0x0000082800000000 offset=0x0bf00000 offset_bytes=200278016 region_va=0xfffecbf00000 region_pa=0x000008280bf00000
+tid=13 region=67 sorted_page=3 hugepage=28 huge_va=0xfffe80000000 huge_pa=0x0000082840000000 offset=0x34600000 offset_bytes=878706688 region_va=0xfffeb4600000 region_pa=0x0000082874600000
+tid=13 region=68 sorted_page=4 hugepage=27 huge_va=0xfffe40000000 huge_pa=0x0000082880000000 offset=0x37400000 offset_bytes=926941184 region_va=0xfffe77400000 region_pa=0x00000828b7400000
+tid=13 region=69 sorted_page=5 hugepage=26 huge_va=0xfffe00000000 huge_pa=0x00000828c0000000 offset=0x03600000 offset_bytes=56623104 region_va=0xfffe03600000 region_pa=0x00000828c3600000
+=== End of mapping ===
+STAGE_BEGIN round=36 mode=random seed=35 stage=warmup seconds=10 unix_time=1792374573
+STAGE_END round=36 mode=random seed=35 stage=warmup status=OK elapsed=10.003423 blocks=839229 covered_GiB=819.559570 covered_GiB_s=81.927914 load_GiB=12.805618
+STAGE_BEGIN round=36 mode=random seed=35 stage=measure seconds=10 unix_time=1792374583
+STAGE_END round=36 mode=random seed=35 stage=measure status=OK elapsed=10.003499 blocks=839619 covered_GiB=819.940430 covered_GiB_s=81.965361 load_GiB=12.811569
+TRIAL_END round=36 mode=random seed=35
+TRIAL_BEGIN round=50 mode=random seed=49
+mode=random seed=49 quarter_counts=[10,23,23,14]
+=== Selected region mapping (offsets are bytes) ===
+tid=0 region=0 sorted_page=0 hugepage=31 huge_va=0xffff40000000 huge_pa=0x0000082780000000 offset=0x15800000 offset_bytes=360710144 region_va=0xffff55800000 region_pa=0x0000082795800000
+tid=0 region=1 sorted_page=1 hugepage=30 huge_va=0xffff00000000 huge_pa=0x00000827c0000000 offset=0x1cb00000 offset_bytes=481296384 region_va=0xffff1cb00000 region_pa=0x00000827dcb00000
+tid=0 region=2 sorted_page=2 hugepage=29 huge_va=0xfffec0000000 huge_pa=0x0000082800000000 offset=0x0b900000 offset_bytes=193986560 region_va=0xfffecb900000 region_pa=0x000008280b900000
+tid=0 region=3 sorted_page=3 hugepage=28 huge_va=0xfffe80000000 huge_pa=0x0000082840000000 offset=0x2c600000 offset_bytes=744488960 region_va=0xfffeac600000 region_pa=0x000008286c600000
+tid=0 region=4 sorted_page=4 hugepage=27 huge_va=0xfffe40000000 huge_pa=0x0000082880000000 offset=0x1bc00000 offset_bytes=465567744 region_va=0xfffe5bc00000 region_pa=0x000008289bc00000
+tid=1 region=5 sorted_page=5 hugepage=26 huge_va=0xfffe00000000 huge_pa=0x00000828c0000000 offset=0x37f00000 offset_bytes=938475520 region_va=0xfffe37f00000 region_pa=0x00000828f7f00000
+tid=1 region=6 sorted_page=6 hugepage=25 huge_va=0xfffdc0000000 huge_pa=0x0000082900000000 offset=0x17100000 offset_bytes=386924544 region_va=0xfffdd7100000 region_pa=0x0000082917100000
+tid=1 region=7 sorted_page=7 hugepage=24 huge_va=0xfffd80000000 huge_pa=0x0000082940000000 offset=0x22f00000 offset_bytes=586153984 region_va=0xfffda2f00000 region_pa=0x0000082962f00000
+tid=1 region=8 sorted_page=8 hugepage=23 huge_va=0xfffd40000000 huge_pa=0x0000082980000000 offset=0x39900000 offset_bytes=965738496 region_va=0xfffd79900000 region_pa=0x00000829b9900000
+tid=1 region=9 sorted_page=9 hugepage=22 huge_va=0xfffd00000000 huge_pa=0x00000829c0000000 offset=0x18900000 offset_bytes=412090368 region_va=0xfffd18900000 region_pa=0x00000829d8900000
+tid=2 region=10 sorted_page=10 hugepage=21 huge_va=0xfffcc0000000 huge_pa=0x0000082a00000000 offset=0x22c00000 offset_bytes=583008256 region_va=0xfffce2c00000 region_pa=0x0000082a22c00000
+tid=2 region=11 sorted_page=11 hugepage=20 huge_va=0xfffc80000000 huge_pa=0x0000082a40000000 offset=0x15e00000 offset_bytes=367001600 region_va=0xfffc95e00000 region_pa=0x0000082a55e00000
+tid=2 region=12 sorted_page=12 hugepage=19 huge_va=0xfffc40000000 huge_pa=0x0000082a80000000 offset=0x1ea00000 offset_bytes=513802240 region_va=0xfffc5ea00000 region_pa=0x0000082a9ea00000
+tid=2 region=13 sorted_page=13 hugepage=18 huge_va=0xfffc00000000 huge_pa=0x0000082ac0000000 offset=0x0c100000 offset_bytes=202375168 region_va=0xfffc0c100000 region_pa=0x0000082acc100000
+tid=2 region=14 sorted_page=14 hugepage=17 huge_va=0xfffbc0000000 huge_pa=0x0000082b00000000 offset=0x28e00000 offset_bytes=685768704 region_va=0xfffbe8e00000 region_pa=0x0000082b28e00000
+tid=3 region=15 sorted_page=15 hugepage=16 huge_va=0xfffb80000000 huge_pa=0x0000082b40000000 offset=0x1f300000 offset_bytes=523239424 region_va=0xfffb9f300000 region_pa=0x0000082b5f300000
+tid=3 region=16 sorted_page=16 hugepage=15 huge_va=0xfffb40000000 huge_pa=0x0000082b80000000 offset=0x05e00000 offset_bytes=98566144 region_va=0xfffb45e00000 region_pa=0x0000082b85e00000
+tid=3 region=17 sorted_page=17 hugepage=14 huge_va=0xfffb00000000 huge_pa=0x0000082bc0000000 offset=0x29400000 offset_bytes=692060160 region_va=0xfffb29400000 region_pa=0x0000082be9400000
+tid=3 region=18 sorted_page=18 hugepage=13 huge_va=0xfffac0000000 huge_pa=0x0000082c00000000 offset=0x08b00000 offset_bytes=145752064 region_va=0xfffac8b00000 region_pa=0x0000082c08b00000
+tid=3 region=19 sorted_page=19 hugepage=12 huge_va=0xfffa80000000 huge_pa=0x0000082c40000000 offset=0x10800000 offset_bytes=276824064 region_va=0xfffa90800000 region_pa=0x0000082c50800000
+tid=4 region=20 sorted_page=20 hugepage=11 huge_va=0xfffa40000000 huge_pa=0x0000082c80000000 offset=0x30600000 offset_bytes=811597824 region_va=0xfffa70600000 region_pa=0x0000082cb0600000
+tid=4 region=21 sorted_page=21 hugepage=10 huge_va=0xfffa00000000 huge_pa=0x0000082cc0000000 offset=0x12a00000 offset_bytes=312475648 region_va=0xfffa12a00000 region_pa=0x0000082cd2a00000
+tid=4 region=22 sorted_page=22 hugepage=9 huge_va=0xfff9c0000000 huge_pa=0x0000082d00000000 offset=0x3b700000 offset_bytes=997195776 region_va=0xfff9fb700000 region_pa=0x0000082d3b700000
+tid=4 region=23 sorted_page=23 hugepage=8 huge_va=0xfff980000000 huge_pa=0x0000082d40000000 offset=0x2d500000 offset_bytes=760217600 region_va=0xfff9ad500000 region_pa=0x0000082d6d500000
+tid=4 region=24 sorted_page=24 hugepage=7 huge_va=0xfff940000000 huge_pa=0x0000082d80000000 offset=0x25c00000 offset_bytes=633339904 region_va=0xfff965c00000 region_pa=0x0000082da5c00000
+tid=5 region=25 sorted_page=25 hugepage=6 huge_va=0xfff900000000 huge_pa=0x0000082dc0000000 offset=0x14800000 offset_bytes=343932928 region_va=0xfff914800000 region_pa=0x0000082dd4800000
+tid=5 region=26 sorted_page=26 hugepage=5 huge_va=0xfff8c0000000 huge_pa=0x0000082e00000000 offset=0x24e00000 offset_bytes=618659840 region_va=0xfff8e4e00000 region_pa=0x0000082e24e00000
+tid=5 region=27 sorted_page=27 hugepage=4 huge_va=0xfff880000000 huge_pa=0x0000082e40000000 offset=0x3b600000 offset_bytes=996147200 region_va=0xfff8bb600000 region_pa=0x0000082e7b600000
+tid=5 region=28 sorted_page=28 hugepage=3 huge_va=0xfff840000000 huge_pa=0x0000082e80000000 offset=0x1ad00000 offset_bytes=449839104 region_va=0xfff85ad00000 region_pa=0x0000082e9ad00000
+tid=5 region=29 sorted_page=29 hugepage=2 huge_va=0xfff800000000 huge_pa=0x0000082ec0000000 offset=0x2b400000 offset_bytes=725614592 region_va=0xfff82b400000 region_pa=0x0000082eeb400000
+tid=6 region=30 sorted_page=30 hugepage=1 huge_va=0xfff7c0000000 huge_pa=0x0000082f00000000 offset=0x33300000 offset_bytes=858783744 region_va=0xfff7f3300000 region_pa=0x0000082f33300000
+tid=6 region=31 sorted_page=31 hugepage=0 huge_va=0xfff780000000 huge_pa=0x0000082f40000000 offset=0x25000000 offset_bytes=620756992 region_va=0xfff7a5000000 region_pa=0x0000082f65000000
+tid=6 region=32 sorted_page=0 hugepage=31 huge_va=0xffff40000000 huge_pa=0x0000082780000000 offset=0x3f800000 offset_bytes=1065353216 region_va=0xffff7f800000 region_pa=0x00000827bf800000
+tid=6 region=33 sorted_page=1 hugepage=30 huge_va=0xffff00000000 huge_pa=0x00000827c0000000 offset=0x20800000 offset_bytes=545259520 region_va=0xffff20800000 region_pa=0x00000827e0800000
+tid=6 region=34 sorted_page=2 hugepage=29 huge_va=0xfffec0000000 huge_pa=0x0000082800000000 offset=0x25000000 offset_bytes=620756992 region_va=0xfffee5000000 region_pa=0x0000082825000000
+tid=7 region=35 sorted_page=3 hugepage=28 huge_va=0xfffe80000000 huge_pa=0x0000082840000000 offset=0x2ce00000 offset_bytes=752877568 region_va=0xfffeace00000 region_pa=0x000008286ce00000
+tid=7 region=36 sorted_page=4 hugepage=27 huge_va=0xfffe40000000 huge_pa=0x0000082880000000 offset=0x0bb00000 offset_bytes=196083712 region_va=0xfffe4bb00000 region_pa=0x000008288bb00000
+tid=7 region=37 sorted_page=5 hugepage=26 huge_va=0xfffe00000000 huge_pa=0x00000828c0000000 offset=0x2bd00000 offset_bytes=735051776 region_va=0xfffe2bd00000 region_pa=0x00000828ebd00000
+tid=7 region=38 sorted_page=6 hugepage=25 huge_va=0xfffdc0000000 huge_pa=0x0000082900000000 offset=0x08c00000 offset_bytes=146800640 region_va=0xfffdc8c00000 region_pa=0x0000082908c00000
+tid=7 region=39 sorted_page=7 hugepage=24 huge_va=0xfffd80000000 huge_pa=0x0000082940000000 offset=0x20a00000 offset_bytes=547356672 region_va=0xfffda0a00000 region_pa=0x0000082960a00000
+tid=8 region=40 sorted_page=8 hugepage=23 huge_va=0xfffd40000000 huge_pa=0x0000082980000000 offset=0x12d00000 offset_bytes=315621376 region_va=0xfffd52d00000 region_pa=0x0000082992d00000
+tid=8 region=41 sorted_page=9 hugepage=22 huge_va=0xfffd00000000 huge_pa=0x00000829c0000000 offset=0x17b00000 offset_bytes=397410304 region_va=0xfffd17b00000 region_pa=0x00000829d7b00000
+tid=8 region=42 sorted_page=10 hugepage=21 huge_va=0xfffcc0000000 huge_pa=0x0000082a00000000 offset=0x17700000 offset_bytes=393216000 region_va=0xfffcd7700000 region_pa=0x0000082a17700000
+tid=8 region=43 sorted_page=11 hugepage=20 huge_va=0xfffc80000000 huge_pa=0x0000082a40000000 offset=0x08400000 offset_bytes=138412032 region_va=0xfffc88400000 region_pa=0x0000082a48400000
+tid=8 region=44 sorted_page=12 hugepage=19 huge_va=0xfffc40000000 huge_pa=0x0000082a80000000 offset=0x12700000 offset_bytes=309329920 region_va=0xfffc52700000 region_pa=0x0000082a92700000
+tid=9 region=45 sorted_page=13 hugepage=18 huge_va=0xfffc00000000 huge_pa=0x0000082ac0000000 offset=0x1e300000 offset_bytes=506462208 region_va=0xfffc1e300000 region_pa=0x0000082ade300000
+tid=9 region=46 sorted_page=14 hugepage=17 huge_va=0xfffbc0000000 huge_pa=0x0000082b00000000 offset=0x39500000 offset_bytes=961544192 region_va=0xfffbf9500000 region_pa=0x0000082b39500000
+tid=9 region=47 sorted_page=15 hugepage=16 huge_va=0xfffb80000000 huge_pa=0x0000082b40000000 offset=0x2ec00000 offset_bytes=784334848 region_va=0xfffbaec00000 region_pa=0x0000082b6ec00000
+tid=9 region=48 sorted_page=16 hugepage=15 huge_va=0xfffb40000000 huge_pa=0x0000082b80000000 offset=0x1e100000 offset_bytes=504365056 region_va=0xfffb5e100000 region_pa=0x0000082b9e100000
+tid=9 region=49 sorted_page=17 hugepage=14 huge_va=0xfffb00000000 huge_pa=0x0000082bc0000000 offset=0x34100000 offset_bytes=873463808 region_va=0xfffb34100000 region_pa=0x0000082bf4100000
+tid=10 region=50 sorted_page=18 hugepage=13 huge_va=0xfffac0000000 huge_pa=0x0000082c00000000 offset=0x3bd00000 offset_bytes=1003487232 region_va=0xfffafbd00000 region_pa=0x0000082c3bd00000
+tid=10 region=51 sorted_page=19 hugepage=12 huge_va=0xfffa80000000 huge_pa=0x0000082c40000000 offset=0x1c600000 offset_bytes=476053504 region_va=0xfffa9c600000 region_pa=0x0000082c5c600000
+tid=10 region=52 sorted_page=20 hugepage=11 huge_va=0xfffa40000000 huge_pa=0x0000082c80000000 offset=0x2a000000 offset_bytes=704643072 region_va=0xfffa6a000000 region_pa=0x0000082caa000000
+tid=10 region=53 sorted_page=21 hugepage=10 huge_va=0xfffa00000000 huge_pa=0x0000082cc0000000 offset=0x10000000 offset_bytes=268435456 region_va=0xfffa10000000 region_pa=0x0000082cd0000000
+tid=10 region=54 sorted_page=22 hugepage=9 huge_va=0xfff9c0000000 huge_pa=0x0000082d00000000 offset=0x22e00000 offset_bytes=585105408 region_va=0xfff9e2e00000 region_pa=0x0000082d22e00000
+tid=11 region=55 sorted_page=23 hugepage=8 huge_va=0xfff980000000 huge_pa=0x0000082d40000000 offset=0x1d500000 offset_bytes=491782144 region_va=0xfff99d500000 region_pa=0x0000082d5d500000
+tid=11 region=56 sorted_page=24 hugepage=7 huge_va=0xfff940000000 huge_pa=0x0000082d80000000 offset=0x3e600000 offset_bytes=1046478848 region_va=0xfff97e600000 region_pa=0x0000082dbe600000
+tid=11 region=57 sorted_page=25 hugepage=6 huge_va=0xfff900000000 huge_pa=0x0000082dc0000000 offset=0x08f00000 offset_bytes=149946368 region_va=0xfff908f00000 region_pa=0x0000082dc8f00000
+tid=11 region=58 sorted_page=26 hugepage=5 huge_va=0xfff8c0000000 huge_pa=0x0000082e00000000 offset=0x2d500000 offset_bytes=760217600 region_va=0xfff8ed500000 region_pa=0x0000082e2d500000
+tid=11 region=59 sorted_page=27 hugepage=4 huge_va=0xfff880000000 huge_pa=0x0000082e40000000 offset=0x0a100000 offset_bytes=168820736 region_va=0xfff88a100000 region_pa=0x0000082e4a100000
+tid=12 region=60 sorted_page=28 hugepage=3 huge_va=0xfff840000000 huge_pa=0x0000082e80000000 offset=0x3ef00000 offset_bytes=1055916032 region_va=0xfff87ef00000 region_pa=0x0000082ebef00000
+tid=12 region=61 sorted_page=29 hugepage=2 huge_va=0xfff800000000 huge_pa=0x0000082ec0000000 offset=0x26100000 offset_bytes=638582784 region_va=0xfff826100000 region_pa=0x0000082ee6100000
+tid=12 region=62 sorted_page=30 hugepage=1 huge_va=0xfff7c0000000 huge_pa=0x0000082f00000000 offset=0x16100000 offset_bytes=370147328 region_va=0xfff7d6100000 region_pa=0x0000082f16100000
+tid=12 region=63 sorted_page=31 hugepage=0 huge_va=0xfff780000000 huge_pa=0x0000082f40000000 offset=0x32500000 offset_bytes=844103680 region_va=0xfff7b2500000 region_pa=0x0000082f72500000
+tid=12 region=64 sorted_page=0 hugepage=31 huge_va=0xffff40000000 huge_pa=0x0000082780000000 offset=0x2a000000 offset_bytes=704643072 region_va=0xffff6a000000 region_pa=0x00000827aa000000
+tid=13 region=65 sorted_page=1 hugepage=30 huge_va=0xffff00000000 huge_pa=0x00000827c0000000 offset=0x0bd00000 offset_bytes=198180864 region_va=0xffff0bd00000 region_pa=0x00000827cbd00000
+tid=13 region=66 sorted_page=2 hugepage=29 huge_va=0xfffec0000000 huge_pa=0x0000082800000000 offset=0x2a200000 offset_bytes=706740224 region_va=0xfffeea200000 region_pa=0x000008282a200000
+tid=13 region=67 sorted_page=3 hugepage=28 huge_va=0xfffe80000000 huge_pa=0x0000082840000000 offset=0x18300000 offset_bytes=405798912 region_va=0xfffe98300000 region_pa=0x0000082858300000
+tid=13 region=68 sorted_page=4 hugepage=27 huge_va=0xfffe40000000 huge_pa=0x0000082880000000 offset=0x26400000 offset_bytes=641728512 region_va=0xfffe66400000 region_pa=0x00000828a6400000
+tid=13 region=69 sorted_page=5 hugepage=26 huge_va=0xfffe00000000 huge_pa=0x00000828c0000000 offset=0x3ff00000 offset_bytes=1072693248 region_va=0xfffe3ff00000 region_pa=0x00000828fff00000
+=== End of mapping ===
+STAGE_BEGIN round=50 mode=random seed=49 stage=warmup seconds=10 unix_time=1792374853
+STAGE_END round=50 mode=random seed=49 stage=warmup status=OK elapsed=10.003417 blocks=831986 covered_GiB=812.486328 covered_GiB_s=81.220883 load_GiB=12.695099
+STAGE_BEGIN round=50 mode=random seed=49 stage=measure seconds=10 unix_time=1792374863
+STAGE_END round=50 mode=random seed=49 stage=measure status=OK elapsed=10.003473 blocks=832302 covered_GiB=812.794922 covered_GiB_s=81.251270 load_GiB=12.699921
+TRIAL_END round=50 mode=random seed=49
