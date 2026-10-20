@@ -1,15 +1,16 @@
 #define _GNU_SOURCE
 #define _FILE_OFFSET_BITS 64
 /*
- * Four existing L0 VA ranges; ten distinct 1MiB slots per range; 40 regions.
- * No hugepages, physical-base assumptions, sorting, PID argument, or load test.
- * Offsets are multiples of 1MiB relative to each L0 base. Tail bytes are unused.
+ * Four USER-SUPPLIED L0 start VAs and one cachesize in MiB per L0 range.
+ * No memory allocation, hugepages, physical-base assumptions, sorting, or PID.
+ * Each L0 range is [bases[p], bases[p] + cachesize_mib * 1048576).
+ * Select ten distinct 1MiB slots per range, giving 40 selected regions.
+ * Offsets are multiples of 1MiB relative to each user-supplied L0 base.
  * One SplitMix64 stream is initialized from seed, then used for L0 pages 0..3.
  *
- * Real buffers: call l0_scan_40(bases, lengths, seed) INSIDE their owner process.
+ * Real buffers: call l0_scan_40(bases, cachesize_mib, seed) in their owner process.
  *   const void *bases[4] = {l0_0, l0_1, l0_2, l0_3};
- *   size_t lengths[4] = {len0, len1, len2, len3};
- *   int rc = l0_scan_40(bases, lengths, 35);
+ *   int rc = l0_scan_40(bases, 40, 35);  // each L0 range is 40MiB
  * Define L0_SCAN_40_NO_MAIN to compile/link this file without its standalone main.
  * The buffers must be allocated, initialized/resident, and remain mapped.
  * Merely passing another process's numerical VAs to a new executable does not
@@ -17,11 +18,11 @@
  *
  * Standalone build:
  *   gcc -O2 -std=c11 -Wall -Wextra l0_scan_40.c -o l0_scan_40
- * Raw VA inputs (must ALREADY be mapped in this very process):
- *   ./l0_scan_40 SEED VA0 LEN0 VA1 LEN1 VA2 LEN2 VA3 LEN3
- * Self-contained test with ordinary anonymous memory, no hugepages:
- *   sudo ./l0_scan_40 --demo 35 40M 40M 40M 40M
- * Lengths accept decimal/hex bytes or K/M/G suffixes (KiB/MiB/GiB).
+ * Inputs (VAs must ALREADY be mapped in this very process):
+ *   ./l0_scan_40 VA0 VA1 VA2 VA3 CACHESIZE_MIB SEED
+ * CACHESIZE_MIB is the length of EACH L0 range, not the sum of four ranges.
+ * For example, 40 means four 40MiB L0 ranges; 10MiB is selected from each.
+ * The program never creates or initializes these four memory ranges.
  *
  * PA is queried for each selected VA and every base page covered by its 1MiB.
  * l0_region_pa is ONLY the PA of the L0 range's first byte. Without hugepages,
@@ -40,9 +41,6 @@
 #include <limits.h>
 #include <fcntl.h>
 #include <unistd.h>
-#ifndef L0_SCAN_40_NO_MAIN
-#include <sys/mman.h>
-#endif
 
 #define L0_COUNT 4U
 #define REGIONS_PER_L0 10U
@@ -172,10 +170,17 @@ static int check_region_mapping(int fd, uint64_t page_bytes, selected_region_t *
 }
 
 /* Public entry point. All four VAs must belong to the calling process. */
-int l0_scan_40(const void *const bases[L0_COUNT], const size_t lengths[L0_COUNT],
+int l0_scan_40(const void *const bases[L0_COUNT], size_t cachesize_mib,
                uint64_t seed)
 {
-    if (!bases || !lengths) { fprintf(stderr, "Null input array\n"); return 1; }
+    if (!bases || cachesize_mib < REGIONS_PER_L0 ||
+        cachesize_mib > SIZE_MAX / REGION_BYTES) {
+        fprintf(stderr, "Supply four VAs and cachesize >=10MiB per L0 range\n");
+        return 1;
+    }
+    size_t lengths[L0_COUNT];
+    for (unsigned p=0; p<L0_COUNT; ++p)
+        lengths[p]=cachesize_mib*(size_t)REGION_BYTES;
     selected_region_t regions[REGION_COUNT] = {0};
     if (select_regions(bases, lengths, seed, regions)) return 1;
     long base_page=sysconf(_SC_PAGESIZE);
@@ -194,9 +199,9 @@ int l0_scan_40(const void *const bases[L0_COUNT], const size_t lengths[L0_COUNT]
     }
     close(fd);
     if (failed) return 1; /* Never emit invented or partial successful records. */
-    printf("mode=random seed=%" PRIu64 " l0_count=%u regions_per_l0=%u "
+    printf("mode=random seed=%" PRIu64 " cachesize_mib=%zu l0_count=%u regions_per_l0=%u "
            "regions=%u region_bytes=%" PRIu64 " base_page_bytes=%" PRIu64 "\n",
-           seed,L0_COUNT,REGIONS_PER_L0,REGION_COUNT,REGION_BYTES,page_bytes);
+           seed,cachesize_mib,L0_COUNT,REGIONS_PER_L0,REGION_COUNT,REGION_BYTES,page_bytes);
     for (unsigned i=0; i<REGION_COUNT; ++i) {
         const selected_region_t *r=&regions[i];
         unsigned p=r->l0_page;
@@ -215,74 +220,45 @@ int l0_scan_40(const void *const bases[L0_COUNT], const size_t lengths[L0_COUNT]
 }
 
 #ifndef L0_SCAN_40_NO_MAIN
-static int parse_number(const char *s, uint64_t *value, int allow_suffix)
+static int parse_number(const char *s, uint64_t *value)
 {
     if (!s[0] || s[0]<'0' || s[0]>'9') return -1;
     errno=0;
     char *end;
     int base=s[0]=='0' && (s[1]=='x' || s[1]=='X') ? 16 : 10;
     unsigned long long v=strtoull(s,&end,base);
-    if (errno || end==s || v>UINT64_MAX) return -1;
-    uint64_t scale=1;
-    if (*end) {
-        if (!allow_suffix || end[1]) return -1;
-        switch (*end) {
-            case 'k': case 'K': scale=UINT64_C(1024); break;
-            case 'm': case 'M': scale=REGION_BYTES; break;
-            case 'g': case 'G': scale=UINT64_C(1073741824); break;
-            default: return -1;
-        }
-    }
-    if (v>UINT64_MAX/scale) return -1;
-    *value=(uint64_t)v*scale;
+    if (errno || end==s || *end || v>UINT64_MAX) return -1;
+    *value=(uint64_t)v;
     return 0;
 }
 
 static void usage(const char *name)
 {
-    fprintf(stderr,"Usage: %s SEED VA0 LEN0 VA1 LEN1 VA2 LEN2 VA3 LEN3\n"
-            "   or: %s --demo SEED LEN0 LEN1 LEN2 LEN3\n"
-            "LEN: bytes or K/M/G suffix; each range >=10MiB, ranges must not overlap.\n"
-            "Raw VAs must exist in THIS process. For existing L0 buffers, call\n"
-            "l0_scan_40(bases,lengths,seed) inside their owner process.\n",name,name);
+    fprintf(stderr,"Usage: %s VA0 VA1 VA2 VA3 CACHESIZE_MIB SEED\n"
+            "Provide four existing L0 start VAs; no memory is allocated.\n"
+            "CACHESIZE_MIB is the length of EACH range, >=10, e.g. 40 for 40MiB.\n"
+            "Ranges must not overlap. VAs must exist in the calling process.\n"
+            "Embedded entry: l0_scan_40(bases,cachesize_mib,seed).\n",name);
 }
 
 int main(int argc, char **argv)
 {
     if (argc==2 && !strcmp(argv[1],"--help")) { usage(argv[0]); return 0; }
-    int demo=argc==7 && !strcmp(argv[1],"--demo");
-    if (!demo && argc!=10) { usage(argv[0]); return 1; }
-    uint64_t seed;
-    if (parse_number(argv[demo?2:1],&seed,0)) {
-        fprintf(stderr,"Invalid seed\n"); return 1;
-    }
+    if (argc!=7) { usage(argv[0]); return 1; }
     const void *bases[L0_COUNT]={0};
-    size_t lengths[L0_COUNT];
     for (unsigned p=0; p<L0_COUNT; ++p) {
-        uint64_t len,va=0;
-        if (parse_number(argv[demo?3+p:3+2*p],&len,1) || len>SIZE_MAX ||
-            len/REGION_BYTES<REGIONS_PER_L0 ||
-            (!demo && (parse_number(argv[2+2*p],&va,0) || va>UINTPTR_MAX))) {
-            fprintf(stderr,"Invalid l0_page=%u VA/length; length must be >=10MiB\n",p);
+        uint64_t va;
+        if (parse_number(argv[1+p],&va) || va>UINTPTR_MAX) {
+            fprintf(stderr,"Invalid starting VA for l0_page=%u\n",p);
             return 1;
         }
         bases[p]=(const void *)(uintptr_t)va;
-        lengths[p]=(size_t)len;
     }
-    unsigned allocated=0;
-    int result=0;
-    if (demo) {
-        for (unsigned p=0; p<L0_COUNT; ++p) {
-            void *memory=mmap(NULL,lengths[p],PROT_READ|PROT_WRITE,
-                              MAP_PRIVATE|MAP_ANONYMOUS,-1,0);
-            if (memory==MAP_FAILED) { perror("mmap demo L0"); result=1; break; }
-            bases[p]=memory;
-            allocated++;
-            memset(memory,0,lengths[p]); /* Materialize ordinary anonymous pages. */
-        }
+    uint64_t cachesize_mib,seed;
+    if (parse_number(argv[5],&cachesize_mib) || cachesize_mib>SIZE_MAX ||
+        parse_number(argv[6],&seed)) {
+        fprintf(stderr,"Invalid cachesize or seed\n"); return 1;
     }
-    if (!result) result=l0_scan_40(bases,lengths,seed);
-    for (unsigned p=0; p<allocated; ++p) munmap((void *)bases[p],lengths[p]);
-    return result;
+    return l0_scan_40(bases,(size_t)cachesize_mib,seed);
 }
 #endif
